@@ -1,0 +1,157 @@
+/* The host element must also be fixed so it doesn't consume
+   flex column space inside the hero section */
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: block;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 48px;
+  /* Gradient that fades to transparent — blends naturally over the hero */
+  background: linear-gradient(to bottom, rgba(7, 13, 18, 0.72) 0%, transparent 100%);
+
+  @media (max-width: 640px) {
+    padding: 20px 22px;
+  }
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  flex-shrink: 0;
+
+  img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+  }
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+/* ── Desktop nav links ── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+  a {
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+    padding-bottom: 3px;
+    transition: color 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 0;
+      height: 1px;
+      background: var(--sky);
+      transition: right 0.25s ease;
+    }
+
+    &:hover {
+      color: var(--white);
+      &::after { right: 0; }
+    }
+
+    &.active {
+      color: var(--white);
+      &::after { right: 0; }
+    }
+  }
+
+  /* ── Mobile drawer ── */
+  @media (max-width: 900px) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 78%;
+    max-width: 320px;
+    background: var(--bg-2);
+    border-left: 1px solid var(--border);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+    padding: 48px 40px;
+    transform: translateX(100%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 101;
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    a {
+      font-size: 14px;
+      letter-spacing: 0.1em;
+    }
+  }
+}
+
+/* ── Hamburger button ── */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 242, 234, 0.2);
+  background: transparent;
+  cursor: pointer;
+  z-index: 110;
+  transition: border-color 0.2s ease;
+
+  &:hover { border-color: var(--sky); }
+
+  span {
+    width: 16px;
+    height: 1.5px;
+    background: var(--white);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+
+  &.open span:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+  }
+  &.open span:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+  }
+
+  @media (max-width: 900px) {
+    display: flex;
+  }
+}

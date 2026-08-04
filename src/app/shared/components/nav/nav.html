@@ -1,0 +1,27 @@
+<header class="header">
+  <a routerLink="/" class="logo">
+    <img src="assets/MW.png" alt="Maliban Wovens Logo" />
+    <span class="logo-text font-display">MALIBAN<br />WOVENS</span>
+  </a>
+
+  <nav class="nav-links font-body" [class.open]="menuOpen" aria-label="Main navigation">
+    <a routerLink="/about-us"      routerLinkActive="active">About Us</a>
+    <a routerLink="/capabilities"  routerLinkActive="active">Capabilities</a>
+    <a routerLink="/sustainability" routerLinkActive="active">Sustainability</a>
+    <a routerLink="/process"       routerLinkActive="active">Our Process</a>
+    <a routerLink="/innovation"    routerLinkActive="active">Innovation</a>
+    <a routerLink="/careers"       routerLinkActive="active">Careers</a>
+    <a routerLink="/contact"       routerLinkActive="active">Contact</a>
+  </nav>
+
+  <button
+    class="menu-toggle"
+    [class.open]="menuOpen"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="menuOpen"
+    aria-label="Toggle menu"
+  >
+    <span></span>
+    <span></span>
+  </button>
+</header>

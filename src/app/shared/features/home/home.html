@@ -1,0 +1,411 @@
+<div class="page">
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" id="hero">
+    <!-- Video background -->
+    <video autoplay loop muted [muted]="true" playsinline class="hero-video">
+      <source src="assets/vid1.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Darkening overlay so text stays readable -->
+    <div class="hero-overlay"></div>
+
+    <!-- Fixed nav floats above everything -->
+    <app-nav />
+
+    <!-- Right-side section index numbers -->
+    <aside class="section-index" aria-hidden="true">
+      <span class="font-body">01</span>
+      <span class="font-body">02</span>
+      <span class="font-body">03</span>
+      <span class="font-body">04</span>
+    </aside>
+    
+
+    <!-- Main hero copy -->
+    <div class="hero-content wrap">
+      <p class="hero-eyebrow font-body font-size-body-sm">Maliban Group · Est. 1974</p>
+
+      <h1 class="hero-headline font-display font-size-display-xl">
+        We Weave<br />
+        <em>Possibilities</em>
+      </h1>
+
+      <p class="hero-tagline font-body font-size-body-lg">Delivering Excellence in Every Thread.</p>
+
+      <div class="hero-cta">
+        <a routerLink="/capabilities" class="btn-primary font-body">Explore Capabilities</a>
+        <a routerLink="/contact" class="btn-ghost font-body">Get in Touch</a>
+      </div>
+    </div>
+
+    <!-- Stat strip pinned to the bottom -->
+    <div class="hero-stats wrap">
+      @for (stat of stats; track stat.label) {
+        <div class="stat">
+          <span class="stat-value font-display">{{ stat.value }}</span>
+          <span class="stat-label font-body">{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="scroll-line"></span>
+      <span class="scroll-text font-body">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════ BRIEF INTRO ═══════════════ -->
+  <section class="manufacturing-excellence" id="about">
+    <div class="mfg-content wrap">
+      
+      <div class="mfg-text-col">
+        <h2 class="mfg-headline font-display font-size-display-lg" appScrollReveal>
+          MANUFACTURING<br />
+          EXCELLENCE, DELIVERED<br />
+          END TO END
+        </h2>
+        <span class="mfg-line"></span>
+        <p class="mfg-desc font-body font-size-body-md" appScrollReveal="100">
+          From concept to delivery, we manage every step with precision, ensuring quality, speed, innovation and responsible production.
+        </p>
+        <a routerLink="/capabilities" class="link-arrow font-body" appScrollReveal="180">
+          OUR CAPABILITIES
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="mfg-stats-col">
+        <div class="mfg-stat" appScrollReveal="80" scrollRevealVariant="scale">
+          <img src="assets/ribbon.svg" class="mfg-stat-icon" alt="Excellence" />
+          <span class="mfg-stat-value font-display">35+</span>
+          <span class="mfg-stat-label font-body">YEARS OF<br/>EXCELLENCE</span>
+        </div>
+        <div class="mfg-stat" appScrollReveal="160" scrollRevealVariant="scale">
+          <img src="assets/globe.svg" class="mfg-stat-icon" alt="Global Markets" />
+          <span class="mfg-stat-value font-display">50+</span>
+          <span class="mfg-stat-label font-body">GLOBAL<br/>MARKETS</span>
+        </div>
+        <div class="mfg-stat" appScrollReveal="240" scrollRevealVariant="scale">
+          <img src="assets/people.svg" class="mfg-stat-icon" alt="People" />
+          <span class="mfg-stat-value font-display">40,000+</span>
+          <span class="mfg-stat-label font-body">PEOPLE<br/>EMPOWERED</span>
+        </div>
+        <div class="mfg-stat mfg-stat-text-only" appScrollReveal="320" scrollRevealVariant="scale">
+          <img src="assets/leaf.svg" class="mfg-stat-icon" alt="Sustainability" />
+          <span class="mfg-stat-label font-body">COMMITTED TO<br/>SUSTAINABLE<br/>MANUFACTURING</span>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="mfg-image">
+      <img src="assets/cone.png" alt="Yarn cone" appScrollReveal="120" scrollRevealVariant="scale" />
+    </div>
+  </section>
+
+  <!-- ═══════════════ WHAT WE DO ═══════════════ -->
+  <section class="services" id="services">
+
+    <!-- Left intro panel -->
+    <div class="services-intro" appScrollReveal>
+      <p class="services-eyebrow font-body font-size-body-lg">WHAT WE DO</p>
+      <span class="services-rule"></span>
+      <h2 class="services-heading font-display font-size-display-lg">
+        End-to-End<br />
+        Apparel Manufacturing<br />
+        Solutions
+      </h2>
+      <a routerLink="/capabilities" class="services-link font-body">
+        LEARN MORE
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Service panels -->
+    <div class="services-panels">
+
+      <div class="service-panel">
+        <div class="service-panel-bg" style="background-image:url('assets/d.png')"></div>
+        <div class="service-panel-overlay"></div>
+        <div class="service-panel-content">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M6 26L16 6l10 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 20h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="24" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M22 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="service-label font-body font-size-body-lg">DESIGN &amp;<br />DEVELOPMENT</p>
+        </div>
+      </div>
+
+      <div class="service-panel" appScrollReveal="160" scrollRevealVariant="scale">
+        <div class="service-panel-bg" style="background-image:url('assets/s.png')"></div>
+        <div class="service-panel-overlay"></div>
+        <div class="service-panel-content">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="4" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="17" y="4" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="4" y="17" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="17" y="17" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <p class="service-label font-body">SOURCING &amp;<br />MATERIALS</p>
+        </div>
+      </div>
+
+      <div class="service-panel" appScrollReveal="240" scrollRevealVariant="scale">
+        <div class="service-panel-bg" style="background-image:url('assets/f.jpg')"></div>
+        <div class="service-panel-overlay"></div>
+        <div class="service-panel-content">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M8 22c0-5 4-8 8-8s8 3 8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="16" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M4 28h24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="service-label font-body">MANUFACTURING<br />EXCELLENCE</p>
+        </div>
+      </div>
+
+      <div class="service-panel" appScrollReveal="320" scrollRevealVariant="scale">
+        <div class="service-panel-bg" style="background-image:url('assets/q.png')"></div>
+        <div class="service-panel-overlay"></div>
+        <div class="service-panel-content">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 4L6 9v8c0 6 4.5 10.5 10 13 5.5-2.5 10-7 10-13V9L16 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M11 16l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="service-label font-body">QUALITY<br />ASSURANCE</p>
+        </div>
+      </div>
+
+      <div class="service-panel" appScrollReveal="400" scrollRevealVariant="scale">
+        <div class="service-panel-bg" style="background-image:url('assets/bx.jpg')"></div>
+        <div class="service-panel-overlay"></div>
+        <div class="service-panel-content">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="2" y="12" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M22 16h4l4 4v4h-8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="8" cy="26" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="24" cy="26" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 12V8l10-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="service-label font-body">LOGISTICS &amp;<br />DELIVERY</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+   <!-- ═══════════════ TRUSTED BY ═══════════════ -->
+  <section class="trusted-by" id="trusted-by">
+    <div class="trusted-by-content wrap">
+      <p class="trusted-by-eyebrow font-body font-size-body-sm">
+        Trusted by the world's leading fashion brands
+      </p>
+    </div>
+
+    <div class="logo-marquee">
+      <div class="logo-track">
+        <!-- set repeated to keep the strip feeling continuous, not looping every 3 logos -->
+        @for (i of [0,1,2,3,4,5]; track i) {
+          <img class="logo-item" src="assets/logos/ck.png" alt="Calvin Klein" loading="lazy" />
+          <img class="logo-item" src="assets/logos/br.png" alt="Banana Republic" loading="lazy" />
+          <img class="logo-item" src="assets/logos/tm.png" alt="Tommy Hilfiger" loading="lazy" />
+          <img class="logo-item" src="assets/logos/bb.png" alt="Brooks Brothers" loading="lazy" />
+          <img class="logo-item" src="assets/logos/eb.png" alt="Eddie Bauer" loading="lazy" />
+          <img class="logo-item" src="assets/logos/g.png" alt="GANT" loading="lazy" />
+          <img class="logo-item" src="assets/logos/ms.png" alt="MnS" loading="lazy" />
+          <img class="logo-item" src="assets/logos/r.png" alt="REISS" loading="lazy" />
+          <img class="logo-item" src="assets/logos/gap.png" alt="Gap" loading="lazy" />
+          <img class="logo-item" src="assets/logos/mk.png" alt="Michael Kors" loading="lazy" />
+        }
+        <!-- exact duplicate of the block above — required for the seamless -50% loop -->
+        @for (i of [0,1,2,3,4,5]; track i) {
+          <img class="logo-item" src="assets/logos/calvin-klein.svg" alt="Calvin Klein" aria-hidden="true" loading="lazy" />
+          <img class="logo-item" src="assets/logos/banana-republic.svg" alt="Banana Republic" aria-hidden="true" loading="lazy" />
+          <img class="logo-item" src="assets/logos/tommy-hilfiger.svg" alt="Tommy Hilfiger" aria-hidden="true" loading="lazy" />
+        }
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ SUSTAINABILITY & CERTIFICATIONS ═══════════════ -->
+  <section class="sustainability" id="sustainability">
+
+    <!-- Dark half: commitment copy + background photo + 4 pillars -->
+    <div class="sustain-top">
+      <img class="sustain-bg" src="assets/sus.jpg" alt="" aria-hidden="true" />
+      <div class="sustain-overlay"></div>
+
+      <div class="sustain-top-content wrap">
+        <div class="sustain-text-col" appScrollReveal>
+          <p class="sustain-eyebrow font-body font-size-body-sm">SUSTAINABILITY</p>
+          <h2 class="sustain-heading font-display font-size-display-lg">
+            Responsible Today,<br />
+            Better Tomorrow
+          </h2>
+          <p class="sustain-desc font-body font-size-body-md">
+            We integrate sustainable practices across our operations to minimize our impact and create a better future for people and the planet.
+          </p>
+          <a routerLink="/sustainability" class="link-arrow link-arrow-light font-body">
+            OUR COMMITMENT
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="sustain-pillars">
+          <div class="pillar" appScrollReveal="80" scrollRevealVariant="scale">
+            <div class="pillar-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 3c4 5.5 7 9.6 7 13.2 0 4.4-3.4 7.8-7 7.8s-7-3.4-7-7.8C7 12.6 10 8.5 14 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="pillar-label font-body">RESOURCE<br />EFFICIENCY</p>
+            <p class="pillar-desc font-body font-size-body-sm">Optimizing water and energy consumption</p>
+          </div>
+
+          <div class="pillar" appScrollReveal="180" scrollRevealVariant="scale">
+            <div class="pillar-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M6 22c9 0 16-7 16-16 0 0-13-2-16 8-2 6 0 8 0 8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M6 22c2-6 6-10 10-13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="pillar-label font-body">ETHICAL<br />PRODUCTION</p>
+            <p class="pillar-desc font-body font-size-body-sm">Upholding the highest standards for our people and partners</p>
+          </div>
+
+          <div class="pillar" appScrollReveal="280" scrollRevealVariant="scale">
+            <div class="pillar-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 4l4 4-4 4M18 8H9a5 5 0 0 0-5 5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 24l-4-4 4-4M10 20h9a5 5 0 0 0 5-5v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <p class="pillar-label font-body">CIRCULAR<br />SOLUTIONS</p>
+            <p class="pillar-desc font-body font-size-body-sm">Driving innovation in materials and waste reduction</p>
+          </div>
+
+          <div class="pillar" appScrollReveal="380" scrollRevealVariant="scale">
+            <div class="pillar-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M4 14h20M14 4c2.8 2.7 4.4 6.3 4.4 10S16.8 21.3 14 24c-2.8-2.7-4.4-6.3-4.4-10S11.2 6.7 14 4z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p class="pillar-label font-body">COMMUNITY<br />IMPACT</p>
+            <p class="pillar-desc font-body font-size-body-sm">Empowering communities through education and development</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Light half: certifications & awards -->
+    <div class="sustain-certs">
+      <div class="sustain-certs-content wrap" appScrollReveal>
+        <p class="certs-eyebrow font-body font-size-body-sm">CERTIFICATIONS &amp; AWARDS</p>
+        <span class="certs-rule"></span>
+
+        <div class="certs-awards-grid">
+
+          <div class="certs-col" appScrollReveal="100">
+            <h3 class="certs-col-heading font-display font-size-display-sm">
+              Global Quality Assurance Certificates
+            </h3>
+            <ul class="certs-list">
+              <li class="font-body font-size-body-md">
+                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                GSV <span class="cert-full">(Global Security Verification)</span>
+              </li>
+              <li class="font-body font-size-body-md">
+                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                ISO 9000-2
+              </li>
+              <li class="font-body font-size-body-md">
+                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                ISO 14001
+              </li>
+              <li class="font-body font-size-body-md">
+                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                GRS <span class="cert-full">(Global Recycle Standard)</span>
+              </li>
+              <li class="font-body font-size-body-md">
+                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                WRAP <span class="cert-full">(Worldwide Responsible Accredited Production)</span>
+              </li>
+              <li class="font-body font-size-body-md">
+                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                C-TPAT <span class="cert-full">(Customs-Trade Partnership Against Terrorism)</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="awards-col" appScrollReveal="220">
+            <h3 class="certs-col-heading font-display font-size-display-sm">
+              Recognition &amp; Awards
+            </h3>
+            <p class="award-item font-body font-size-body-md">
+              Maliban Jordan was recognized by the Social Security Corporation with an award for excellence in occupational safety &amp; health.
+            </p>
+            <p class="award-item font-body font-size-body-md">
+              Maliban Jordan made the Golden List of the Ministry of Labor due to its outstanding compliance with the Jordanian labor law.
+            </p>
+            <p class="award-item font-body font-size-body-md">
+              We were also the first company in our sector, and 8th in the Kingdom, to get on the Jordanian Customs' Golden List due to our strong compliance history with customs requirements.
+            </p>
+          </div>
+
+        </div>
+
+        <a routerLink="/sustainability" class="services-link font-body" appScrollReveal="320">
+          LEARN MORE
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <app-footer />
+
+
+
+</div>

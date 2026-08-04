@@ -1,1 +1,228 @@
-/* You can add global styles to this file, and also import other style files */
+/* ─────────────────────────────────────────────
+   Global styles — Maliban Wovens
+   ───────────────────────────────────────────── */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Stack+Sans+Text:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap');
+
+/* ── Design tokens ── */
+:root {
+  /* Palette */
+  --bg:      #070d12;
+  --bg-2:    #0d1b26;
+  --bg-3:    #132232;
+  --sky:     #71a8cc;
+  --sky-dim: #4a7da0;
+  --white:   #f4f2ea;
+  --muted:   rgba(244, 242, 234, 0.52);
+  --border:  rgba(244, 242, 234, 0.08);
+
+  /* Typography tokens */
+  --disp: 'Stack Sans Text', sans-serif;
+  --body: 'Inter', sans-serif;
+
+  --hero-height: 800px;
+}
+
+
+
+/* ── Global typography system — TWO BASE TEXT CLASSES + SIZE CLASSES ── */
+.font-display {
+  font-family: var(--disp);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.font-body {
+  font-family: var(--body);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+
+.font-size-display-xl {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+}
+
+.font-size-display-lg {
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.font-size-display-md {
+  font-size: 1.5rem;
+}
+
+.font-size-display-sm {
+  font-size: 0.95rem;
+}
+
+.font-size-body-lg {
+  font-size: 1rem;
+}
+
+.font-size-body-md {
+  font-size: 0.9rem;
+}
+
+.font-size-body-sm {
+  font-size: 0.875rem;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+p {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--disp);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: inherit;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.section-label,
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg { display: block; }
+
+/* ── Utilities ── */
+.wrap {
+  width: 100%;
+  max-width: 1836px;
+  margin-inline: auto;
+  padding-inline: 56px;
+
+  @media (max-width: 1024px) {
+    padding-inline: 48px;
+  }
+
+  @media (max-width: 768px) {
+    padding-inline: 24px;
+  }
+}
+
+/* ── Angular host elements must be block ── */
+/* Without this, custom elements are inline and hero height collapses */
+app-root,
+app-home,
+app-hero-background,
+app-nav,
+app-footer,
+app-about,
+app-capabilities,
+app-innovation {
+  display: block;
+}
+
+/* ── About page — override the dark global body background ──
+   Two selectors on purpose: app-about covers the normal case, and
+   body:has(app-about) is a safety net in case the component ends up
+   nested (e.g. under a router-outlet wrapper) so app-about isn't a
+   direct background layer. If your Angular/browser target doesn't
+   support :has(), add a "page-about" class to <body> from the
+   component's ngOnInit/ngOnDestroy instead. */
+app-about,
+body:has(app-about) {
+  background: #F5F0E8;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ── Capabilities page — override the dark global body background ──
+   Same pattern as app-about above. This page is styled to match the
+   sustainability page: a light canvas throughout, with only the hero
+   and final CTA using a dark photo-overlay for text contrast — those
+   two sections are NOT the page background, they're self-contained
+   dark image blocks that sit on top of this light canvas.
+   NOTE: adjust "app-capabilities" if your component's actual
+   selector is different (check capabilities.component.ts). */
+app-capabilities,
+body:has(app-capabilities) {
+  background: #f7f8f5;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ── Innovation page — override the dark global body background */
+app-innovation,
+body:has(app-innovation) {
+  background: #f7f8f5;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ── Home page — override the dark global body background */
+app-home,
+body:has(app-home) {
+  background: #f1f3f4;
+  min-height: 100vh;
+  position: relative;
+}
