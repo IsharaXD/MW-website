@@ -376,9 +376,9 @@
   }
 }
 
-.mfg-stat-icon {
-  width: 40px;
-  height: 40px;
+.mfg-fa-solid {
+  width: 90px;
+  height: 90px;
   margin-bottom: 16px;
   opacity: 0.7;
 }
@@ -400,7 +400,18 @@
     margin-bottom: 30px;
   }
 }
+.mfg-stat i {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  display: block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
 
+.mfg-stat:hover i {
+  transform: scale(1.1);
+  color: #04068d; // Replace with your brand color
+}
 .mfg-image {
   position: absolute;
 
@@ -977,3 +988,4 @@
     gap: 56px;
   }
 }
+

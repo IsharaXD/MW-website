@@ -66,71 +66,183 @@
   <!-- ═══════════════════════════════════════
        WHAT WE MAKE — continuous auto-scrolling marquee (no arrows)
   ═══════════════════════════════════════ -->
-  <section class="cap-marquee-section" id="make">
-    <div class="wrap cap-marquee-section__head">
+  <section class="cap-showcase" id="make">
+    <div class="wrap cap-showcase__head">
       <span class="section-label font-body">What We Make</span>
     </div>
 
-    <div class="cap-marquee">
-      <div class="cap-marquee__track">
-        <div class="marq-card"><img src="https://picsum.photos/seed/mw-cap-1/520/650" alt="Woven bottoms"><span class="font-body">Woven Bottoms</span></div>
-        <div class="marq-card"><img src="https://picsum.photos/seed/mw-cap-2/520/650" alt="Woven tops"><span class="font-body">Woven Tops</span></div>
-        <div class="marq-card"><img src="https://picsum.photos/seed/mw-cap-3/520/650" alt="Tailored garments"><span class="font-body">Tailored Garments</span></div>
-        <div class="marq-card"><img src="https://picsum.photos/seed/mw-cap-4/520/650" alt="Knit cut and sew"><span class="font-body">Knit Cut &amp; Sew</span></div>
-        <!-- duplicate set for seamless loop -->
-        <div class="marq-card" aria-hidden="true"><img src="https://picsum.photos/seed/mw-cap-1/520/650" alt=""><span class="font-body">Woven Bottoms</span></div>
-        <div class="marq-card" aria-hidden="true"><img src="https://picsum.photos/seed/mw-cap-2/520/650" alt=""><span class="font-body">Woven Tops</span></div>
-        <div class="marq-card" aria-hidden="true"><img src="https://picsum.photos/seed/mw-cap-3/520/650" alt=""><span class="font-body">Tailored Garments</span></div>
-        <div class="marq-card" aria-hidden="true"><img src="https://picsum.photos/seed/mw-cap-4/520/650" alt=""><span class="font-body">Knit Cut &amp; Sew</span></div>
-      </div>
+    <div class="cap-showcase__grid wrap">
+      <article class="showcase-card">
+        <span class="showcase-card__num font-display">01</span>
+        <div class="showcase-card__img"><img src="assets/29.png" alt="Woven bottoms"></div>
+        <span class="showcase-card__label font-body">Woven Bottoms</span>
+      </article>
+      <article class="showcase-card">
+        <span class="showcase-card__num font-display">02</span>
+        <div class="showcase-card__img"><img src="assets/top.png" alt="Woven tops"></div>
+        <span class="showcase-card__label font-body">Woven Tops</span>
+      </article>
+      <article class="showcase-card">
+        <span class="showcase-card__num font-display">03</span>
+        <div class="showcase-card__img"><img src="assets/4.png" alt="Tailored garments"></div>
+        <span class="showcase-card__label font-body">SUITING & OUTER WEAR</span>
+      </article>
+      <article class="showcase-card">
+        <span class="showcase-card__num font-display">04</span>
+        <div class="showcase-card__img"><img src="assets/sp.png" alt="Knit cut and sew"></div>
+        <span class="showcase-card__label font-body">CIRCULAR KNITTED ACTIVE WEAR</span>
+      </article>
     </div>
   </section>
 
 
   <!-- ═══════════════════════════════════════
-       PROCESS — zigzag list, alternating left/right, connected by a center line
+       PROCESS — a stitched thread winds through each stage; a needle
+       leads it in from the left. Falls back to a vertical stitch line
+       on narrow screens.
   ═══════════════════════════════════════ -->
-  <section class="cap-zigzag">
-    <div class="wrap cap-zigzag__head">
+  <section class="cap-thread">
+    <div class="wrap cap-thread__head">
       <span class="section-label font-body">Our Process</span>
       <h2 class="font-display">Concept <span>to shipment.</span></h2>
     </div>
 
-    <div class="cap-zigzag__list wrap">
-      <div class="zig-item">
-        <img class="zig-thumb" src="https://picsum.photos/seed/mw-proc-1/200/200" alt="Design">
-        <span class="zig-num font-display">01</span>
-        <span class="zig-label font-body">Design</span>
+    <!-- Desktop / tablet: horizontal stitched thread -->
+    <div class="cap-thread__wave wrap" aria-hidden="false">
+      <svg class="thread-svg" viewBox="0 0 1400 320" preserveAspectRatio="none">
+        <path class="thread-path"
+              d="M 0,160 C 50,160 50,80 100,80 C 200,80 200,240 300,240 C 400,240 400,80 500,80
+                 C 600,80 600,240 700,240 C 800,240 800,80 900,80 C 1000,80 1000,240 1100,240
+                 C 1200,240 1200,80 1300,80 C 1350,80 1350,160 1400,160" />
+      </svg>
+
+      <div class="thread-step thread-step--top" style="left:7%">
+        <div class="thread-step__marker"><i class="fa-solid fa-pen"></i></div>
+        <div class="thread-step__body">
+          <span class="thread-step__num font-display">01</span>
+          <h3 class="thread-step__label font-body">Design</h3>
+          <p class="thread-step__desc font-body">Concept, palette and pattern signed off before a yard is cut.</p>
+        </div>
       </div>
-      <div class="zig-item zig-item--right">
-        <img class="zig-thumb" src="https://picsum.photos/seed/mw-proc-2/200/200" alt="Sourcing">
-        <span class="zig-num font-display">02</span>
-        <span class="zig-label font-body">Sourcing</span>
+
+      <div class="thread-step thread-step--bottom" style="left:21%">
+        <div class="thread-step__marker"><i class="fa-solid fa-tape"></i></div>
+        <div class="thread-step__body">
+          <span class="thread-step__num font-display">02</span>
+          <h3 class="thread-step__label font-body">Sourcing</h3>
+          <p class="thread-step__desc font-body">Fabric and trims vetted weeks ahead of the line.</p>
+        </div>
       </div>
-      <div class="zig-item">
-        <img class="zig-thumb" src="https://picsum.photos/seed/mw-proc-3/200/200" alt="Sampling">
-        <span class="zig-num font-display">03</span>
-        <span class="zig-label font-body">Sampling</span>
+
+      <div class="thread-step thread-step--top" style="left:36%">
+        <div class="thread-step__marker"><i class="fa-solid fa-shirt"></i></div>
+        <div class="thread-step__body">
+          <span class="thread-step__num font-display">03</span>
+          <h3 class="thread-step__label font-body">Sampling</h3>
+          <p class="thread-step__desc font-body">Fit samples approved before bulk starts.</p>
+        </div>
       </div>
-      <div class="zig-item zig-item--right">
-        <img class="zig-thumb" src="https://picsum.photos/seed/mw-proc-4/200/200" alt="Cutting">
-        <span class="zig-num font-display">04</span>
-        <span class="zig-label font-body">Cutting</span>
+
+      <div class="thread-step thread-step--bottom" style="left:50%">
+        <div class="thread-step__marker"><i class="fa-solid fa-scissors"></i></div>
+        <div class="thread-step__body">
+          <span class="thread-step__num font-display">04</span>
+          <h3 class="thread-step__label font-body">Cutting</h3>
+          <p class="thread-step__desc font-body">Lay planning cuts waste, holds every panel true.</p>
+        </div>
       </div>
-      <div class="zig-item">
-        <img class="zig-thumb" src="https://picsum.photos/seed/mw-proc-5/200/200" alt="Sewing">
-        <span class="zig-num font-display">05</span>
-        <span class="zig-label font-body">Sewing</span>
+
+      <div class="thread-step thread-step--top" style="left:64%">
+        <div class="thread-step__marker"><i class="fa-brands fa-shirtsinbulk"></i></div>
+        <div class="thread-step__body">
+          <span class="thread-step__num font-display">05</span>
+          <h3 class="thread-step__label font-body">Sewing</h3>
+          <p class="thread-step__desc font-body">Dedicated lines, in-line QC on every seam.</p>
+        </div>
       </div>
-      <div class="zig-item zig-item--right">
-        <img class="zig-thumb" src="https://picsum.photos/seed/mw-proc-6/200/200" alt="Finishing">
-        <span class="zig-num font-display">06</span>
-        <span class="zig-label font-body">Finishing</span>
+
+      <div class="thread-step thread-step--bottom" style="left:79%">
+        <div class="thread-step__marker"><i class="fa-solid fa-list-check"></i></div>
+        <div class="thread-step__body">
+          <span class="thread-step__num font-display">06</span>
+          <h3 class="thread-step__label font-body">Finishing</h3>
+          <p class="thread-step__desc font-body">Pressing and final check against the sample.</p>
+        </div>
       </div>
-      <div class="zig-item">
-        <img class="zig-thumb" src="https://picsum.photos/seed/mw-proc-7/200/200" alt="Shipping">
-        <span class="zig-num font-display">07</span>
-        <span class="zig-label font-body">Shipping</span>
+
+      <div class="thread-step thread-step--top" style="left:93%">
+        <div class="thread-step__marker"><i class="fa-solid fa-truck-plane"></i></div>
+        <div class="thread-step__body">
+          <span class="thread-step__num font-display">07</span>
+          <h3 class="thread-step__label font-body">Shipping</h3>
+          <p class="thread-step__desc font-body">Consolidated and moved to fifty-plus markets.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile: vertical stitched thread -->
+    <div class="cap-thread__list wrap">
+      <div class="thread-row">
+        <span class="thread-row__marker"><i class="fa-solid fa-pen"></i></span>
+        <div class="thread-row__body">
+          <span class="thread-row__num font-display">01</span>
+          <h3 class="font-body">Design</h3>
+          <p class="font-body">Concept, palette and pattern signed off before a yard is cut.</p>
+        </div>
+      </div>
+
+      <div class="thread-row">
+        <span class="thread-row__marker"><i class="fa-solid fa-tape"></i></span>
+        <div class="thread-row__body">
+          <span class="thread-row__num font-display">02</span>
+          <h3 class="font-body">Sourcing</h3>
+          <p class="font-body">Fabric and trims vetted weeks ahead of the line.</p>
+        </div>
+      </div>
+
+      <div class="thread-row">
+        <span class="thread-row__marker"><i class="fa-solid fa-shirt"></i></span>
+        <div class="thread-row__body">
+          <span class="thread-row__num font-display">03</span>
+          <h3 class="font-body">Sampling</h3>
+          <p class="font-body">Fit samples approved before bulk starts.</p>
+        </div>
+      </div>
+
+      <div class="thread-row">
+        <span class="thread-row__marker"><i class="fa-solid fa-scissors"></i></span>
+        <div class="thread-row__body">
+          <span class="thread-row__num font-display">04</span>
+          <h3 class="font-body">Cutting</h3>
+          <p class="font-body">Lay planning cuts waste, holds every panel true.</p>
+        </div>
+      </div>
+
+      <div class="thread-row">
+        <span class="thread-row__marker"><i class="fa-brands fa-shirtsinbulk"></i></span>
+        <div class="thread-row__body">
+          <span class="thread-row__num font-display">05</span>
+          <h3 class="font-body">Sewing</h3>
+          <p class="font-body">Dedicated lines, in-line QC on every seam.</p>
+        </div>
+      </div>
+
+      <div class="thread-row">
+        <span class="thread-row__marker"><i class="fa-solid fa-list-check"></i></span>
+        <div class="thread-row__body">
+          <span class="thread-row__num font-display">06</span>
+          <h3 class="font-body">Finishing</h3>
+          <p class="font-body">Pressing and final check against the sample.</p>
+        </div>
+      </div>
+
+      <div class="thread-row">
+        <span class="thread-row__marker"><i class="fa-solid fa-truck-plane"></i></span>
+        <div class="thread-row__body">
+          <span class="thread-row__num font-display">07</span>
+          <h3 class="font-body">Shipping</h3>
+          <p class="font-body">Consolidated and moved to fifty-plus markets.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -146,17 +258,17 @@
 
     <div class="cap-marquee cap-marquee--reverse cap-marquee--lg">
       <div class="cap-marquee__track cap-marquee__track--reverse">
-        <div class="marq-card marq-card--lg"><img src="https://picsum.photos/seed/mw-fac-1/700/500" alt="Weaving"><span class="font-body">Weaving</span></div>
-        <div class="marq-card marq-card--lg"><img src="https://picsum.photos/seed/mw-fac-2/700/500" alt="Cutting"><span class="font-body">Cutting</span></div>
-        <div class="marq-card marq-card--lg"><img src="https://picsum.photos/seed/mw-fac-3/700/500" alt="Sewing"><span class="font-body">Sewing</span></div>
-        <div class="marq-card marq-card--lg"><img src="https://picsum.photos/seed/mw-fac-4/700/500" alt="Laboratory"><span class="font-body">Laboratory</span></div>
-        <div class="marq-card marq-card--lg"><img src="https://picsum.photos/seed/mw-fac-5/700/500" alt="Warehouse"><span class="font-body">Warehouse</span></div>
+        <div class="marq-card marq-card--lg"><img src="assets/fab.jpg" alt="Weaving"><span class="font-body">Weaving</span></div>
+        <div class="marq-card marq-card--lg"><img src="assets/cut.png" alt="Cutting"><span class="font-body">Cutting</span></div>
+        <div class="marq-card marq-card--lg"><img src="assets/sew.png" alt="Sewing"><span class="font-body">Sewing</span></div>
+        <div class="marq-card marq-card--lg"><img src="https://res.cloudinary.com/gbyojmiz/image/upload/v1785926144/lab_oxsodh.png" alt="Laboratory"><span class="font-body">Laboratory</span></div>
+        <div class="marq-card marq-card--lg"><img src="assets/store.png" alt="Warehouse"><span class="font-body">Warehouse</span></div>
         <!-- duplicate set for seamless loop -->
-        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="https://picsum.photos/seed/mw-fac-1/700/500" alt=""><span class="font-body">Weaving</span></div>
-        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="https://picsum.photos/seed/mw-fac-2/700/500" alt=""><span class="font-body">Cutting</span></div>
-        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="https://picsum.photos/seed/mw-fac-3/700/500" alt=""><span class="font-body">Sewing</span></div>
-        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="https://picsum.photos/seed/mw-fac-4/700/500" alt=""><span class="font-body">Laboratory</span></div>
-        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="https://picsum.photos/seed/mw-fac-5/700/500" alt=""><span class="font-body">Warehouse</span></div>
+        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="assets/fab.jpg" alt=""><span class="font-body">Weaving</span></div>
+        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="assets/cut.png" alt=""><span class="font-body">Cutting</span></div>
+        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="assets/sew.png" alt=""><span class="font-body">Sewing</span></div>
+        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="https://res.cloudinary.com/gbyojmiz/image/upload/v1785926144/lab_oxsodh.png" alt=""><span class="font-body">Laboratory</span></div>
+        <div class="marq-card marq-card--lg" aria-hidden="true"><img src="assets/store.png" alt=""><span class="font-body">Warehouse</span></div>
       </div>
     </div>
   </section>
@@ -166,7 +278,7 @@
        CTA — ghost monogram behind the headline, echoes the hero
   ═══════════════════════════════════════ -->
   <section class="cap-cta">
-    <img class="cap-cta__img" src="malibanassets/par.jpg" alt="Maliban Wovens production">
+    <img class="cap-cta__img" src="assets/par.jpg" alt="Maliban Wovens production">
     <div class="cap-cta__overlay"></div>
     <span class="cap-cta__ghost font-display" aria-hidden="true">MW</span>
     <div class="cap-cta__content wrap">

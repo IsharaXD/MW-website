@@ -85,7 +85,7 @@ in technology, sustainability and our people.
 
 <div class="pillar">
 
-<div class="pillar__icon"></div>
+<div class="pillar__icon"><i class="fa-solid fa-ranking-star"></i></div>
 
 <div>
 
@@ -99,7 +99,7 @@ in technology, sustainability and our people.
 
 <div class="pillar">
 
-<div class="pillar__icon"></div>
+<div class="pillar__icon"><i class="fa-solid fa-lightbulb"></i></div>
 
 <div>
 
@@ -113,7 +113,7 @@ in technology, sustainability and our people.
 
 <div class="pillar">
 
-<div class="pillar__icon"></div>
+<div class="pillar__icon"><i class="fa-solid fa-handshake"></i></div>
 
 <div>
 
@@ -127,11 +127,7 @@ in technology, sustainability and our people.
 
 </div>
 
-<a class="btn-outline">
 
-Discover More
-
-</a>
 
 </div>
 
@@ -297,7 +293,7 @@ id="timeline">
 
 <div class="wrap">
 
-<div class="section__header">
+<div class="section__header section__header--timeline">
 
 <h2>
 
@@ -305,7 +301,42 @@ Our Journey
 
 </h2>
 
+<div class="tl-nav">
+
+<button
+type="button"
+class="tl-nav__btn"
+(click)="scrollTimeline(-1)"
+[disabled]="tlAtStart"
+aria-label="Scroll to earlier milestones">
+
+<i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+
+</button>
+
+<button
+type="button"
+class="tl-nav__btn"
+(click)="scrollTimeline(1)"
+[disabled]="tlAtEnd"
+aria-label="Scroll to later milestones">
+
+<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+
+</button>
+
 </div>
+
+</div>
+
+<div
+class="timeline-track-wrap"
+#timelineTrack
+tabindex="0"
+role="region"
+aria-label="Company timeline, use arrow keys or the buttons above to navigate"
+(keydown)="onTimelineKeydown($event)"
+(scroll)="onTimelineScroll()">
 
 <div class="timeline-track">
 
@@ -317,15 +348,17 @@ Our Journey
 
 <div class="tl-milestone__img">
 
-<img src="assets/images/about/timeline1.jpg">
+<img src="assets/mrk.png" alt="Rathnam Building, Almoor Street, Colombo">
+
+<span class="tl-milestone__year">1974</span>
 
 </div>
 
-<h3>1989</h3>
+<h3>Foundation at Almoor Street</h3>
 
 <p>
 
-Company Founded
+A small factory was established in Rathnam Building, Almoor Street, Colombo with about 35 machines and workers, where the famous <strong>"Maliban"</strong> brand shirts were produced.
 
 </p>
 
@@ -337,15 +370,17 @@ Company Founded
 
 <div class="tl-milestone__img">
 
-<img src="assets/images/about/timeline2.jpg">
+<img src="assets/1997.jpg" alt="New Colombo 10 facility">
+
+<span class="tl-milestone__year">1979</span>
 
 </div>
 
-<h3>2001</h3>
+<h3>New Colombo 10 Facility</h3>
 
 <p>
 
-Expanded Manufacturing
+A new facility was established in Colombo 10, expanding operations with 100 Juki machines and 500 employees across sewing, cutting and finishing departments.
 
 </p>
 
@@ -357,15 +392,17 @@ Expanded Manufacturing
 
 <div class="tl-milestone__img">
 
-<img src="assets/images/about/timeline3.jpg">
+<img src="assets/ex.jpg" alt="First garment exports">
+
+<span class="tl-milestone__year">1981</span>
 
 </div>
 
-<h3>2014</h3>
+<h3>Began Garment Exports</h3>
 
 <p>
 
-Global Growth
+The company began exporting garments through an agency, later setting up its own shipping department under the Maliban name. Its first brand exported was <strong>"MAST."</strong>
 
 </p>
 
@@ -377,17 +414,65 @@ Global Growth
 
 <div class="tl-milestone__img">
 
-<img src="assets/images/about/timeline4.jpg">
+<img src="assets/build.png" alt="Four-story facility expansion">
+
+<span class="tl-milestone__year">1985</span>
 
 </div>
 
-<h3>2026</h3>
+<h3>Four-Story Expansion</h3>
 
 <p>
 
-Future Ready
+The company expanded into a four-story facility with offices, production areas and advanced embroidery, increasing its workforce to about 1,200.
 
 </p>
+
+</div>
+
+<div class="tl-milestone">
+
+<div class="tl-milestone__dot"></div>
+
+<div class="tl-milestone__img">
+
+<img src="assets/images/about/timeline5.jpg" alt="EAM Maliban Textile restructuring">
+
+<span class="tl-milestone__year">1994</span>
+
+</div>
+
+<h3>EAM Maliban Textile (Pvt) Ltd</h3>
+
+<p>
+
+Under the leadership of the Chairman, the company was restructured and commenced operations as <strong>EAM Maliban Textile (Pvt) Ltd</strong>.
+
+</p>
+
+</div>
+
+<div class="tl-milestone tl-milestone--current">
+
+<div class="tl-milestone__dot"></div>
+
+<div class="tl-milestone__img">
+
+<img src="assets/images/about/timeline6.jpg" alt="Renamed to Maliban Wovens">
+
+<span class="tl-milestone__year">2024</span>
+
+</div>
+
+<h3>Renamed to Maliban Wovens</h3>
+
+<p>
+
+The name <strong>EAM Maliban Textile (Pvt) Ltd</strong> was changed to <strong>Maliban Wovens (Pvt) Ltd</strong>, marking a new chapter for the company.
+
+</p>
+
+</div>
 
 </div>
 
@@ -452,6 +537,41 @@ Leadership biography.
 </div>
 
 </div>
+
+<div class="lead-card">
+
+<div class="lead-card__inner">
+
+<div class="lead-card__front">
+
+<img src="assets/tharik.png">
+
+<div class="lead-card__overlay">
+
+<h3>Name</h3>
+
+<span>Chief Executive Officer</span>
+
+</div>
+
+</div>
+
+<div class="lead-card__back">
+
+<h3>Name</h3>
+
+<p>
+
+Leadership biography.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
 
 <div class="lead-card">
 
@@ -691,39 +811,7 @@ Leadership biography.
 
 </div>
 
-<div class="lead-card">
 
-<div class="lead-card__inner">
-
-<div class="lead-card__front">
-
-<img src="assets/tharik.png">
-
-<div class="lead-card__overlay">
-
-<h3>Name</h3>
-
-<span>Chief Executive Officer</span>
-
-</div>
-
-</div>
-
-<div class="lead-card__back">
-
-<h3>Name</h3>
-
-<p>
-
-Leadership biography.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
 
 </div>
 
@@ -764,25 +852,25 @@ Life At Maliban Wovens
 
 <div class="g-cell g-cell--feature">
 
-<img src="assets/images/about/gallery1.jpg">
+<img src="assets/opis.jpeg">
 
 </div>
 
 <div class="g-cell">
 
-<img src="assets/images/about/gallery2.jpg">
+<img src="assets/33.JPG">
 
 </div>
 
 <div class="g-cell">
 
-<img src="assets/images/about/gallery3.jpg">
+<img src="assets/gdf.png">
 
 </div>
 
 <div class="g-cell g-cell--wide">
 
-<img src="assets/images/about/gallery4.jpg">
+<img src="assets/IMG_7164.JPG">
 
 </div>
 

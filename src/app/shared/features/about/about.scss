@@ -232,34 +232,7 @@ p {
   }
 }
 
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  color: rgba(255, 255, 255, 0.9);
-  background: transparent;
-  border-radius: 999px;
-  font-size: 13.5px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  transition: var(--transition);
-  margin-top: 28px;
 
-  svg {
-    transition: transform var(--transition);
-  }
-
-  &:hover {
-    background: var(--white);
-    color: var(--navy);
-
-    svg {
-      transform: translateX(4px);
-    }
-  }
-}
 
 // ─────────────────────────────────────────────────────────────
 //  STITCH BACKGROUND CANVAS
@@ -1101,9 +1074,22 @@ p {
 
 .timeline-track-wrap {
   overflow-x: auto;
+  overflow-y: hidden;
   padding-bottom: 24px;
   cursor: grab;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain; // stops the drag/swipe from being handed off to browser back/forward navigation
+  scroll-behavior: smooth;
+  outline: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--navy-mid);
+    border-radius: var(--r-sm);
+  }
 
   &::-webkit-scrollbar {
     height: 3px;
@@ -1116,6 +1102,58 @@ p {
   &::-webkit-scrollbar-thumb {
     background: rgba(47, 95, 143, 0.25);
     border-radius: 99px;
+  }
+}
+
+// Header row with the "Our Journey" title and the nav buttons
+.section__header--timeline {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.tl-nav {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.tl-nav__btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(19, 43, 68, 0.15);
+  background: var(--white);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+
+  &:hover:not(:disabled) {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--navy-mid);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 640px) {
+  .section__header--timeline {
+    flex-wrap: wrap;
   }
 }
 

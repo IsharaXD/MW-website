@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID, ElementRef, ViewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Footer } from '../../components/footer/footer';
 import { Nav } from '../../components/nav/nav';
@@ -11,6 +11,11 @@ import { Nav } from '../../components/nav/nav';
   styleUrl: './about.scss',
 })
 export class About implements AfterViewInit {
+
+  @ViewChild('timelineTrack') timelineTrack?: ElementRef<HTMLElement>;
+
+  tlAtStart = true;
+  tlAtEnd = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -60,5 +65,44 @@ export class About implements AfterViewInit {
     }, { rootMargin: '-40% 0px -50% 0px' });
 
     sections.forEach(s => sectionSpy.observe(s));
+
+    // ── Timeline scroll-nav button state ───────────────────────
+    // set initial disabled/enabled state once the track has rendered
+    this.onTimelineScroll();
+  }
+
+  // ── Timeline scroll-nav ───────────────────────────────────────
+  scrollTimeline(direction: 1 | -1): void {
+    const el = this.timelineTrack?.nativeElement;
+    if (!el) return;
+
+    // scroll by roughly one card's width (300px card + 40px padding)
+    const amount = 340 * direction;
+    el.scrollBy({ left: amount, behavior: 'smooth' });
+  }
+
+  onTimelineKeydown(event: KeyboardEvent): void {
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      this.scrollTimeline(1);
+    } else if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      this.scrollTimeline(-1);
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      this.timelineTrack?.nativeElement.scrollTo({ left: 0, behavior: 'smooth' });
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      const el = this.timelineTrack?.nativeElement;
+      if (el) el.scrollTo({ left: el.scrollWidth, behavior: 'smooth' });
+    }
+  }
+
+  onTimelineScroll(): void {
+    const el = this.timelineTrack?.nativeElement;
+    if (!el) return;
+
+    this.tlAtStart = el.scrollLeft <= 4;
+    this.tlAtEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
   }
 }
