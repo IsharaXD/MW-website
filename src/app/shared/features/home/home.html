@@ -4,7 +4,7 @@
   <section class="hero" id="hero">
     <!-- Video background -->
     <video autoplay loop muted [muted]="true" playsinline class="hero-video">
-      <source src="assets/vid1.mp4" type="video/mp4" />
+      <source src="assets/mwhero.webm" type="video/mp4" />
     </video>
 
     <!-- Darkening overlay so text stays readable -->
@@ -66,7 +66,7 @@
           EXCELLENCE, DELIVERED<br />
           END TO END
         </h2>
-        <span class="mfg-line"></span>
+        
         <p class="mfg-desc font-body font-size-body-md" appScrollReveal="100">
           From concept to delivery, we manage every step with precision, ensuring quality, speed, innovation and responsible production.
         </p>
@@ -81,17 +81,17 @@
       <div class="mfg-stats-col">
         <div class="mfg-stat" appScrollReveal="80" scrollRevealVariant="scale">
           <i class="fa-solid fa-award" > </i>
-          <span class="mfg-stat-value font-display">35+</span>
+          <span class="mfg-stat-value font-display">50+</span>
           <span class="mfg-stat-label font-body">YEARS OF<br/>EXCELLENCE</span>
         </div>
         <div class="mfg-stat" appScrollReveal="160" scrollRevealVariant="scale">
           <i class="fa-solid fa-globe"></i>
-          <span class="mfg-stat-value font-display">50+</span>
+          <span class="mfg-stat-value font-display">20+</span>
           <span class="mfg-stat-label font-body">GLOBAL<br/>MARKETS</span>
         </div>
         <div class="mfg-stat" appScrollReveal="240" scrollRevealVariant="scale">
           <i class="fa-solid fa-people-group"></i>
-          <span class="mfg-stat-value font-display">40,000+</span>
+          <span class="mfg-stat-value font-display">12,000+</span>
           <span class="mfg-stat-label font-body">PEOPLE<br/>EMPOWERED</span>
         </div>
         <div class="mfg-stat mfg-stat-text-only" appScrollReveal="320" scrollRevealVariant="scale">
@@ -108,12 +108,12 @@
   </section>
 
   <!-- ═══════════════ WHAT WE DO ═══════════════ -->
+  <!-- ═══════════════ WHAT WE DO ═══════════════ -->
   <section class="services" id="services">
 
-    <!-- Left intro panel -->
-    <div class="services-intro" appScrollReveal>
+    <div class="services-header" appScrollReveal>
       <p class="services-eyebrow font-body font-size-body-lg">WHAT WE DO</p>
-      <span class="services-rule"></span>
+      
       <h2 class="services-heading font-display font-size-display-lg">
         End-to-End<br />
         Apparel Manufacturing<br />
@@ -127,89 +127,47 @@
       </a>
     </div>
 
-    <!-- Service panels -->
+    <!-- Service cards -->
     <div class="services-panels">
 
       <div class="service-panel">
         <div class="service-panel-bg" style="background-image:url('assets/d.png')"></div>
         <div class="service-panel-overlay"></div>
-        <div class="service-panel-content">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path d="M6 26L16 6l10 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M9 20h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="24" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M22 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <p class="service-label font-body font-size-body-lg">DESIGN &amp;<br />DEVELOPMENT</p>
-        </div>
+        <span class="service-index font-body">01</span>
+        <p class="service-label font-body">Design &amp; Development</p>
       </div>
 
       <div class="service-panel" appScrollReveal="160" scrollRevealVariant="scale">
         <div class="service-panel-bg" style="background-image:url('assets/s.png')"></div>
         <div class="service-panel-overlay"></div>
-        <div class="service-panel-content">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <rect x="4" y="4" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
-              <rect x="17" y="4" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
-              <rect x="4" y="17" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
-              <rect x="17" y="17" width="11" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <p class="service-label font-body">SOURCING &amp;<br />MATERIALS</p>
-        </div>
+        <span class="service-index font-body">02</span>
+        <p class="service-label font-body">Sourcing &amp; Materials</p>
       </div>
 
       <div class="service-panel" appScrollReveal="240" scrollRevealVariant="scale">
         <div class="service-panel-bg" style="background-image:url('assets/f.jpg')"></div>
         <div class="service-panel-overlay"></div>
-        <div class="service-panel-content">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path d="M8 22c0-5 4-8 8-8s8 3 8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="16" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M4 28h24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <p class="service-label font-body">MANUFACTURING<br />EXCELLENCE</p>
-        </div>
+        <span class="service-index font-body">03</span>
+        <p class="service-label font-body">Manufacturing Excellence</p>
       </div>
 
       <div class="service-panel" appScrollReveal="320" scrollRevealVariant="scale">
         <div class="service-panel-bg" style="background-image:url('assets/q.png')"></div>
         <div class="service-panel-overlay"></div>
-        <div class="service-panel-content">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path d="M16 4L6 9v8c0 6 4.5 10.5 10 13 5.5-2.5 10-7 10-13V9L16 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M11 16l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <p class="service-label font-body">QUALITY<br />ASSURANCE</p>
-        </div>
+        <span class="service-index font-body">04</span>
+        <p class="service-label font-body">Quality Assurance</p>
       </div>
 
       <div class="service-panel" appScrollReveal="400" scrollRevealVariant="scale">
         <div class="service-panel-bg" style="background-image:url('assets/bx.jpg')"></div>
         <div class="service-panel-overlay"></div>
-        <div class="service-panel-content">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <rect x="2" y="12" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M22 16h4l4 4v4h-8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <circle cx="8" cy="26" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="24" cy="26" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M6 12V8l10-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <p class="service-label font-body">LOGISTICS &amp;<br />DELIVERY</p>
-        </div>
+        <span class="service-index font-body">05</span>
+        <p class="service-label font-body">Logistics &amp; Delivery</p>
       </div>
 
     </div>
   </section>
+
 
    <!-- ═══════════════ TRUSTED BY ═══════════════ -->
   <section class="trusted-by" id="trusted-by">
@@ -318,92 +276,134 @@
       </div>
     </div>
 
-    <!-- Light half: certifications & awards -->
-    <div class="sustain-certs">
-      <div class="sustain-certs-content wrap" appScrollReveal>
-        <p class="certs-eyebrow font-body font-size-body-sm">CERTIFICATIONS &amp; AWARDS</p>
-        <span class="certs-rule"></span>
-
-        <div class="certs-awards-grid">
-
-          <div class="certs-col" appScrollReveal="100">
-            <h3 class="certs-col-heading font-display font-size-display-sm">
-              Global Quality Assurance Certificates
-            </h3>
-            <ul class="certs-list">
-              <li class="font-body font-size-body-md">
-                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
-                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                GSV <span class="cert-full">(Global Security Verification)</span>
-              </li>
-              <li class="font-body font-size-body-md">
-                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
-                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                ISO 9000-2
-              </li>
-              <li class="font-body font-size-body-md">
-                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
-                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                ISO 14001
-              </li>
-              <li class="font-body font-size-body-md">
-                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
-                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                GRS <span class="cert-full">(Global Recycle Standard)</span>
-              </li>
-              <li class="font-body font-size-body-md">
-                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
-                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                WRAP <span class="cert-full">(Worldwide Responsible Accredited Production)</span>
-              </li>
-              <li class="font-body font-size-body-md">
-                <svg class="cert-check" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.3"/>
-                  <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                C-TPAT <span class="cert-full">(Customs-Trade Partnership Against Terrorism)</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="awards-col" appScrollReveal="220">
-            <h3 class="certs-col-heading font-display font-size-display-sm">
-              Recognition &amp; Awards
-            </h3>
-            <p class="award-item font-body font-size-body-md">
-              Maliban Jordan was recognized by the Social Security Corporation with an award for excellence in occupational safety &amp; health.
-            </p>
-            <p class="award-item font-body font-size-body-md">
-              Maliban Jordan made the Golden List of the Ministry of Labor due to its outstanding compliance with the Jordanian labor law.
-            </p>
-            <p class="award-item font-body font-size-body-md">
-              We were also the first company in our sector, and 8th in the Kingdom, to get on the Jordanian Customs' Golden List due to our strong compliance history with customs requirements.
-            </p>
-          </div>
-
-        </div>
-
-        <a routerLink="/sustainability" class="services-link font-body" appScrollReveal="320">
-          LEARN MORE
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-    </div>
+    
   </section>
   
+<section class="cert-grid-section">
+  <div class="cg-inner wrap">
 
+    <!-- Left: editorial header -->
+    <div class="cg-left">
+      <p class="cg-eyebrow font-body">Certifications</p>
+      <h2 class="cg-heading font-display">Held to the world's highest standards</h2>
+      <p class="cg-sub font-body">Every product we make is backed by internationally recognised certifications across quality, sustainability, ethics and worker welfare</p>
+      <div class="cg-stat-row">
+        <div class="cg-stat">
+          <strong class="font-display">8+</strong>
+          <span class="font-body">Active Certifications</span>
+        </div>
+        <div class="cg-stat">
+          <strong class="font-display">Global</strong>
+          <span class="font-body">Standards compilanc</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: badge grid -->
+    <div class="cg-right">
+      <div class="cg-badge-grid">
+
+         <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/smeta.png" alt="SMETA">
+          </div>
+          <span class="cg-badge-label font-body">SMETA 4 PILLAR CERTIFIED</span>
+          <span class="cg-badge-desc font-body">Ethical Trade & Responsible Supply Chain</span>
+        </div>
+
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/better-cotton.png" alt="Better Cotton Initiative">
+          </div>
+          <span class="cg-badge-label font-body">Better Cotton Initiative</span>
+          <span class="cg-badge-desc font-body">Supporting Sustainable Cotton Farming</span>
+        </div>
+
+       
+
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/gots.png" alt="GOTS">
+          </div>
+          <span class="cg-badge-label font-body">GOTS</span>
+          <span class="cg-badge-desc font-body">Origanic Textiles for a better future</span>
+        </div>
+
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/oeko.png" alt="BSCI">
+          </div>
+          <span class="cg-badge-label font-body">Oeko-tex certified</span>
+          <span class="cg-badge-desc font-body">tested for harmful substances & safe for use</span>
+        </div>
+
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/higg.png" alt="Higg Index">
+          </div>
+          <span class="cg-badge-label font-body">Higg Index</span>
+          <span class="cg-badge-desc font-body">Sustainability Metrics</span>
+        </div>
+
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/Flax.jpg" alt="European Flax">
+          </div>
+          <span class="cg-badge-label font-body">European flax certified</span>
+          <span class="cg-badge-desc font-body">traceabke premium flax from europe</span>
+        </div>
+
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/sedex.png" alt="Sedex">
+          </div>
+          <span class="cg-badge-label font-body">Sedex member</span>
+          <span class="cg-badge-desc font-body">Driving responsible & sustainable business</span>
+        </div>
+
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/SLCP.png" alt="slcp">
+          </div>
+          <span class="cg-badge-label font-body">slcp verified</span>
+          <span class="cg-badge-desc font-body">Promoting decent work worldwide</span>
+        </div>
+
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/grs.png" alt="grs">
+          </div>
+          <span class="cg-badge-label font-body">grs certified</span>
+          <span class="cg-badge-desc font-body">verified recycled content & responsible production</span>
+        </div>
+        
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/ocs100.png" alt="ocs 100">
+          </div>
+          <span class="cg-badge-label font-body">ocs 100 certified</span>
+          <span class="cg-badge-desc font-body">ensuring organic content integrity</span>
+        </div>
+        
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/r100.png" alt="rcs 100">
+          </div>
+          <span class="cg-badge-label font-body">rcs 100 certified</span>
+          <span class="cg-badge-desc font-body">verified recycled content in products</span>
+        </div>
+        <div class="cg-badge-card">
+          <div class="cg-badge-img">
+            <img src="assets/certificates/ocs100.png" alt="ocs">
+          </div>
+          <span class="cg-badge-label font-body">ocs blended certified</span>
+          <span class="cg-badge-desc font-body">blended organic content certified</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <app-footer />
 

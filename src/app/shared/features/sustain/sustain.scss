@@ -10,7 +10,7 @@ $text: rgba(2, 3, 77, 0.979);
 $text-soft: #3668aa;
 
 $white: #ffffff;
-$off-white: #f7f8f5;
+$off-white: #eaf2e9;
 
 $border: #e3e8e2;
 
@@ -18,8 +18,6 @@ $radius-sm: 12px;
 $radius-md: 20px;
 $radius-lg: 28px;
 $radius-xl: 24px;
-
-$container: 1180px;
 
 $font-display: var(--disp);
 $font-body: var(--body);
@@ -29,11 +27,6 @@ $font-body: var(--body);
 // RESET
 // ======================================
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 html {
   scroll-behavior: smooth;
@@ -43,17 +36,17 @@ html {
 .hero p,
 .cap-hero p,
 .final-cta p {
-  color: rgba(255,255,255,.9);
+  color: rgba(255, 255, 255, .9);
 }
 
 :host {
   display: block;
-  background: #f7f8f5;
+  background: #f1f3f4;
   color: $text;
 }
 
 main {
-  background: #f7f8f5;
+  background: #f1f3f4;
 }
 
 img {
@@ -83,7 +76,6 @@ p {
 }
 
 .container {
-  width: min($container, calc(100% - 48px));
   margin: auto;
 }
 
@@ -102,7 +94,7 @@ p {
 
   padding: 14px 19px;
 
-  background: white;
+  background: #f1f3f4;
 
   color: $text;
 
@@ -162,22 +154,25 @@ p {
   inset: 0;
 
   background:
-    linear-gradient(
-      90deg,
+    linear-gradient(90deg,
       rgba(0, 0, 0, 0.65) 0%,
       rgba(0, 0, 0, 0.30) 48%,
-      rgba(0, 0, 0, 0.08) 100%
-    );
+      rgba(0, 0, 0, 0.08) 100%);
 }
 
 .hero-rail {
   position: absolute;
   top: 145px;
-  right: 7%;
+  right: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 24px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .rail-stat {
@@ -242,11 +237,9 @@ p {
 
 .intro {
   max-width: 700px;
-
   margin: auto;
-
-  padding: 115px 24px 70px;
-
+  padding-top: 115px;
+  padding-bottom: 70px;
   text-align: center;
 
   .section-label {
@@ -278,8 +271,6 @@ p {
 // ======================================
 
 .impact-grid {
-  width: min($container, calc(100% - 48px));
-
   margin: 0 auto;
 
   display: grid;
@@ -292,7 +283,7 @@ p {
 .impact-card {
   overflow: hidden;
 
-  background: white;
+  background: #f1f3f4;
 
   border: 1px solid $border;
 
@@ -348,7 +339,7 @@ p {
     font-size: 20px;
   }
 
- 
+
 }
 
 
@@ -356,79 +347,91 @@ p {
 // CARE
 // ======================================
 
+// ======================================
+// CARE
+// ======================================
+
 .care-section {
-  width: min($container, calc(100% - 48px));
+  position: relative;
+  overflow: hidden;
+  margin: 100px auto;
+  padding-top: 90px;
+  border-top: 1px solid $border;
 
-  margin: 130px auto;
 
-  padding: 80px;
-
-  background: $off-white;
-
-  border-radius: $radius-xl;
-
-  display: grid;
-
-  grid-template-columns: 0.8fr 1.2fr;
-
-  gap: 80px;
 }
 
 .care-heading {
+  position: relative;
+  z-index: 1;
+  max-width: 880px;
+  margin-bottom: 64px;
 
-  h2 {
-    margin-top: 18px;
+  .section-label {
+    display: block;
+    margin-bottom: 22px;
+  }
+}
 
-    font-size: 44px;
+.care-statement {
+  font-family: $font-display;
+  font-size: clamp(26px, 2.9vw, 38px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: $text;
 
-    font-weight: 500;
-
-    span {
-      color: $green;
-    }
+  span {
+    color: $green;
   }
 }
 
 .care-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 35px 30px;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid $border;
+  border-bottom: 1px solid $border;
 }
 
 .care-item {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  padding: 32px;
+  border-right: 1px solid $border;
 
-  gap: 18px;
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+    border-right: none;
+  }
 }
 
 .care-letter {
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
+  height: 76px;
 
-  width: 42px;
-  height: 42px;
-
-  display: grid;
-  place-items: center;
-
-  border: 1px solid #b9cbb9;
-
-  border-radius: 50%;
-
-  color: $green;
-
-  font-weight: 600;
+  img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
 }
 
 .care-item h3 {
-  margin-bottom: 5px;
-
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .care-item p {
   color: $text-soft;
+  font-size: 13px;
 }
 
 
@@ -437,25 +440,66 @@ p {
 // ======================================
 
 .roadmap {
-  width: min($container, calc(100% - 48px));
+  position: relative;
+  overflow: hidden;
+  margin: 100px auto;
+  padding-block: 54px; // fixed: was `padding: 54px 0`, which zeroed .wrap's side padding
 
-  margin: 0 auto 130px;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 480px 260px at 8% 15%, rgba(78, 91, 135, 0.06), transparent 70%),
+      radial-gradient(ellipse 420px 240px at 92% 85%, rgba(54, 104, 170, 0.06), transparent 70%);
+    pointer-events: none;
+  }
+}
+
+.roadmap-leaves {
+  position: absolute;
+  top: -40px;
+  left: 80%;
+  transform: translateX(-50%);
+  z-index: 0;
+  width: clamp(520px, 62vw, 900px);
+  pointer-events: none;
+  user-select: none;
+
+  opacity: 0.35;
+  filter: saturate(0.95);
+
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%);
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media (max-width: 760px) {
+    width: 340px;
+    top: -20px;
+  }
+}
+
+.roadmap-header,
+.timeline {
+  position: relative;
+  z-index: 1;
 }
 
 .roadmap-header {
   display: flex;
-
   justify-content: space-between;
-
   align-items: flex-end;
-
-  margin-bottom: 70px;
+  margin-bottom: 80px;
 
   h2 {
     margin-top: 15px;
-
-    font-size: 48px;
-
+    font-size: 44px;
     font-weight: 500;
 
     span {
@@ -470,95 +514,141 @@ p {
 
 .timeline {
   position: relative;
-
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
-  gap: 25px;
+  gap: 30px;
 }
 
 .timeline-line {
   position: absolute;
-
   left: 0;
   right: 0;
-
-  top: 43px;
-
+  top: 61px;
   height: 1px;
-
   background: $border;
+  z-index: 0;
 }
 
 .timeline-item {
   position: relative;
-
-  padding-top: 70px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 
   .timeline-year {
-    position: absolute;
-
-    top: 0;
-
-    font-size: 15px;
-
+    font-family: $font-display;
+    font-size: 36px;
     font-weight: 600;
-
-    color: $green;
+    line-height: 1;
+    color: $text;
+    margin-bottom: 32px;
   }
 
   .timeline-dot {
     position: absolute;
-
-    top: 37px;
-
-    left: 0;
-
+    top: 61px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
     width: 13px;
     height: 13px;
-
-    border: 3px solid white;
-
+    border: 3px solid #f1f3f4;
     border-radius: 50%;
-
-    background: #b6cbb7;
-
-    box-shadow: 0 0 0 1px #b6cbb7;
+    background: $text;
   }
 
-  h3 {
-    margin-bottom: 10px;
+.timeline-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 92px;
+  margin: 42px auto 22px;
+  border-radius: 50%;
+  border: 1px solid $border;
+  background: rgba(255, 255, 255, 0.5);
+  color: $text;
+  font-size: 34px;
+}
 
-    font-size: 16px;
+  h3 {
+    margin-bottom: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .timeline-divider {
+    width: 26px;
+    height: 2px;
+    margin: 0 0 16px;
+    background: $border;
   }
 
   p {
     max-width: 220px;
   }
 
+  .timeline-list {
+    max-width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+
+    li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: $text-soft;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: $green;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   &.highlight {
+    .timeline-year {
+      color: $green;
+    }
 
     .timeline-dot {
       background: $green;
+      box-shadow: 0 0 0 5px rgba(78, 91, 135, 0.16);
+    }
 
-      box-shadow: 0 0 0 1px $green, 0 0 16px 2px rgba(113, 168, 204, 0.35);
+    .timeline-icon {
+      border-color: rgba(78, 91, 135, 0.3);
+      color: $green;
     }
 
     h3 {
-      color: $green-dark;
+      color: $text;
     }
   }
 }
-
 
 // ======================================
 // TRACEABILITY
 // ======================================
 
 .traceability {
-  width: min($container, calc(100% - 48px));
-
   margin: 0 auto 130px;
 
   display: grid;
@@ -570,8 +660,6 @@ p {
   overflow: hidden;
 
   border-radius: $radius-xl;
-
-  background: $green-light;
 }
 
 .trace-image {
@@ -605,7 +693,7 @@ p {
     }
   }
 
-  > p {
+  >p {
     margin-bottom: 28px;
   }
 }
@@ -650,8 +738,6 @@ p {
 // ======================================
 
 .certifications {
-  width: min($container, calc(100% - 48px));
-
   margin: 0 auto 130px;
 }
 
@@ -674,8 +760,13 @@ p {
 }
 
 @keyframes sustainMarquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .cert-marquee {
@@ -694,11 +785,11 @@ p {
 
   div {
     flex: none;
-    min-width: 220px;
+    min-width: 170px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 30px;
+    padding: 20px 28px;
     border-right: 1px solid $border;
     font-size: 13px;
     font-weight: 600;
@@ -706,11 +797,31 @@ p {
     letter-spacing: 0.04em;
     transition: 0.25s ease;
 
-    &:hover { color: $green; }
+    &:hover {
+      color: $green;
+    }
+  }
+
+  img {
+    max-width: 130px;
+    max-height: 42px;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    transition: filter 0.25s ease;
+  }
+
+  div:hover img {
+    filter: grayscale(0) opacity(1);
   }
 }
 
-.cert-marquee:hover .cert-track { animation-play-state: paused; }
+.cert-marquee:hover .cert-track {
+  animation-play-state: paused;
+}
 
 
 // ======================================
@@ -718,8 +829,6 @@ p {
 // ======================================
 
 .people-section {
-  width: min($container, calc(100% - 48px));
-
   margin: 0 auto 130px;
 
   display: grid;
@@ -765,7 +874,7 @@ p {
     }
   }
 
-  > p {
+  >p {
     margin-bottom: 35px;
 
     font-size: 14px;
@@ -779,7 +888,7 @@ p {
 
   gap: 25px;
 
-  > div {
+  >div {
     padding-top: 18px;
 
     border-top: 1px solid #d5ddd4;
@@ -810,9 +919,7 @@ p {
 .final-cta {
   position: relative;
 
-  width: min($container, calc(100% - 48px));
-
-  min-height: 500px;
+  min-height: 56svh;
 
   margin: 0 auto 100px;
 
@@ -824,10 +931,11 @@ p {
 
   align-items: center;
 
-  padding: 70px;
+  padding-block: 70px;
+  width: min(1400px, 92%);
 }
 
-.final-cta > img {
+.final-cta>img {
   position: absolute;
 
   inset: 0;
@@ -843,11 +951,9 @@ p {
 
   inset: 0;
 
-  background: linear-gradient(
-    90deg,
-    rgba(20, 40, 25, 0.75),
-    rgba(20, 40, 25, 0.15)
-  );
+  background: linear-gradient(90deg,
+      rgba(20, 40, 25, 0.75),
+      rgba(20, 40, 25, 0.15));
 }
 
 .final-ghost {
@@ -862,7 +968,9 @@ p {
   pointer-events: none;
   user-select: none;
 
-  @media (max-width: 768px) { display: none; }
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .final-content {
@@ -876,7 +984,7 @@ p {
 
   .section-label {
     color: #d2e6d2;
-    
+
     margin-bottom: 20px;
   }
 
@@ -901,8 +1009,6 @@ p {
 // ======================================
 
 .footer {
-  width: min($container, calc(100% - 48px));
-
   margin: auto;
 
   padding: 50px 0;
@@ -957,17 +1063,44 @@ p {
     margin-right: 15px;
   }
 
-  .hero {
-    padding-left: 5%;
-    padding-right: 5%;
+  .care-section {
+    padding-top: 60px;
   }
 
-  
+  .care-heading {
+    margin-bottom: 44px;
+  }
 
-  .care-section {
-    padding: 55px;
+  .care-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    grid-template-columns: 1fr;
+  .care-item {
+    border-right: none;
+
+    padding: 26px 24px;
+
+    &:nth-child(odd) {
+      padding-left: 0;
+
+      border-right: 1px solid $border;
+    }
+
+    &:nth-child(even) {
+      padding-right: 0;
+    }
+
+    &:nth-child(-n+2) {
+      padding-top: 0;
+    }
+
+    &:nth-child(n+3) {
+      border-top: 1px solid $border;
+    }
+  }
+
+  .roadmap-header {
+    margin-bottom: 50px;
   }
 
   .traceability {
@@ -1017,7 +1150,7 @@ p {
   .hero {
     height: 900px;
 
-    padding: 150px 25px 45px;
+    padding: 150px 7% 90px;
 
     align-items: flex-end;
   }
@@ -1030,7 +1163,7 @@ p {
     }
   }
 
- 
+
   .impact-grid {
     grid-template-columns: 1fr;
   }
@@ -1040,71 +1173,106 @@ p {
   }
 
   .care-section {
-    width: calc(100% - 30px);
+    padding-top: 44px;
 
-    padding: 40px 25px;
+    margin-block: 64px;
+  }
 
-    margin: 80px auto;
+  .care-heading {
+    margin-bottom: 36px;
+  }
+
+  .care-statement {
+    font-size: 24px;
   }
 
   .care-grid {
     grid-template-columns: 1fr;
+
+    border-bottom: none;
   }
 
-  .roadmap {
-    width: calc(100% - 30px);
+  .care-item {
+    padding: 24px 0 !important;
+
+    border-right: none !important;
+    border-top: 1px solid $border !important;
+
+    &:first-child {
+      border-top: none !important;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid $border;
+    }
+  }
+
+  .care-letter {
+    font-size: 40px;
   }
 
   .roadmap-header {
     display: block;
 
-    margin-bottom: 50px;
+    margin-bottom: 44px;
 
     h2 {
-      font-size: 40px;
+      font-size: 36px;
     }
 
-    > p {
-      margin-top: 20px;
+    >p {
+      margin-top: 16px;
     }
   }
 
   .timeline {
     grid-template-columns: 1fr;
 
-    gap: 35px;
+    gap: 44px;
   }
 
   .timeline-line {
-    left: 6px;
+    left: 32px;
 
     top: 0;
     bottom: 0;
 
     width: 1px;
-
     height: auto;
   }
 
   .timeline-item {
-    padding: 0 0 0 45px;
+    align-items: flex-start;
+    text-align: left;
+
+    padding-left: 60px;
 
     .timeline-year {
-      position: static;
+      font-size: 24px;
 
-      margin-bottom: 8px;
+      margin-bottom: 14px;
     }
 
     .timeline-dot {
-      top: 2px;
-      left: 0;
+      top: 12px;
+      left: 32px;
     }
-  }
 
-  .traceability,
-  .people-section,
-  .final-cta {
-    width: calc(100% - 30px);
+    .timeline-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 0 16px;
+  font-size: 26px;
+}
+
+    .timeline-divider {
+      margin-left: 0;
+    }
+
+    p,
+    .timeline-list {
+      max-width: none;
+    }
   }
 
   .trace-content,
@@ -1119,8 +1287,13 @@ p {
 
 
   .cert-track div {
-    min-width: 160px;
-    padding: 16px 20px;
+    min-width: 130px;
+    padding: 16px 18px;
+  }
+
+  .cert-track img {
+    max-width: 84px;
+    max-height: 24px;
   }
 
   .people-features {
@@ -1128,7 +1301,7 @@ p {
   }
 
   .final-cta {
-    padding: 40px 30px;
+    padding-block: 40px;
 
     min-height: 450px;
   }

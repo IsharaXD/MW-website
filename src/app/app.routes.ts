@@ -5,6 +5,7 @@ import { Sustain } from './shared/features/sustain/sustain';
 import { Capabilities } from './shared/features/capabilities/capabilities';
 import { Innovation } from './shared/features/innovation/innovation';
 import { Careers } from './shared/features/careers/careers';
+import { Contact } from './shared/features/contact/contact';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full' },
@@ -16,4 +17,5 @@ export const routes: Routes = [
   { path: 'capabilities', component: Capabilities },
   { path: 'innovation', component: Innovation },
   { path: 'careers', component: Careers },
+  { path: 'contact', component: Contact}
 ];

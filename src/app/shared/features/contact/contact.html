@@ -1,0 +1,186 @@
+<app-nav></app-nav>
+
+<main class="contact-page">
+
+  <!-- ═══════════════════════════════════════
+       HERO — editorial: vertical stat rail on the right,
+       giant headline bottom-left over the photo. No bottom stat strip.
+  ═══════════════════════════════════════ -->
+  <section class="cap-hero hero">
+    <img class="cap-hero__img" src="assets/97.jpg" alt="Maliban Wovens production floor">
+    <div class="cap-hero__overlay"></div>
+
+   
+
+    <div class="hero-content cap-hero__content">
+      <span class="eyebrow font-body">Contact Us</span>
+      <h1 class="font-display">Let's start a<br><span>conversation.</span></h1>
+      <a href="#form" class="btn-primary font-body">Send a Message →</a>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       CONTACT — info column + form card
+  ═══════════════════════════════════════ -->
+  <section class="contact-main" id="form">
+    <div class="wrap contact-main__grid">
+
+      <div class="contact-info">
+        <span class="section-label font-body">Contact Details</span>
+        <h2 class="font-display">Reach the <span>right team.</span></h2>
+        <p class="font-body">Fill in the form and we'll route your enquiry to the right department. Sourcing, merchandising or compliance.</p>
+
+        <div class="contact-info__list">
+          <div class="contact-info__item">
+            <span class="contact-info__icon"><i class="fa-solid fa-envelope"></i></span>
+            <div class="contact-info__body">
+              <h3 class="font-body">E-mail</h3>
+              <p class="font-body">general@maliban.com</p>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <span class="contact-info__icon"><i class="fa-solid fa-globe"></i></span>
+            <div class="contact-info__body">
+              <h3 class="font-body">Website</h3>
+              <p class="font-body">www.maliban.com</p>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <span class="contact-info__icon"><i class="fa-solid fa-phone"></i></span>
+            <div class="contact-info__body">
+              <h3 class="font-body">Phone</h3>
+              <p class="font-body">+94 11 2668000</p>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <span class="contact-info__icon"><i class="fa-solid fa-location-dot"></i></span>
+            <div class="contact-info__body">
+              <h3 class="font-body">Address</h3>
+              <p class="font-body">No 261, Siri Dhamma MW, Colombo 10.</p>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <span class="contact-info__icon"><i class="fa-solid fa-clock"></i></span>
+            <div class="contact-info__body">
+              <h3 class="font-body">Working Hours</h3>
+              <p class="font-body">Monday – Friday, 8:30am – 5:30pm</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info__social">
+          <a href="https://lk.linkedin.com/company/maliban-textiles" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/explore/locations/353829265/eam-maliban-textiles---pvt-ltd/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/p/Maliban-Wovens-61581766194601/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+
+      <form class="contact-form" #contactFormEl (submit)="sendEmail($event)">
+        <input type="hidden" name="time">
+        <div class="contact-form__row">
+          <div class="contact-form__field">
+            <label class="font-body" for="cf-name">Full Name</label>
+            <input class="font-body" type="text" id="cf-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="contact-form__field">
+            <label class="font-body" for="cf-email">Email</label>
+            <input class="font-body" type="email" id="cf-email" name="email" placeholder="you@company.com" required>
+          </div>
+        </div>
+
+        <div class="contact-form__row">
+          <div class="contact-form__field">
+            <label class="font-body" for="cf-company">Company</label>
+            <input class="font-body" type="text" id="cf-company" name="company" placeholder="Company name">
+          </div>
+          <div class="contact-form__field">
+            <label class="font-body" for="cf-phone">Phone</label>
+            <input class="font-body" type="tel" id="cf-phone" name="phone" placeholder="+94 ...">
+          </div>
+        </div>
+
+        <div class="contact-form__field">
+          <label class="font-body" for="cf-subject">Subject</label>
+          <select class="font-body" id="cf-subject" name="subject">
+            <option>General Enquiry</option>
+            <option>Sourcing &amp; Sampling</option>
+            <option>Bulk Production</option>
+            <option>Compliance &amp; Sustainability</option>
+            <option>Careers</option>
+          </select>
+        </div>
+
+        <div class="contact-form__field">
+          <label class="font-body" for="cf-message">Message</label>
+          <textarea class="font-body" id="cf-message" name="message" rows="5" placeholder="Tell us about your project" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary font-body" [disabled]="isSending">
+          {{ isSending ? 'Sending…' : 'Send Message →' }}
+        </button>
+
+        @if (sendStatus === 'success') {
+          <p class="contact-form__status contact-form__status--success font-body">
+            Thanks you! Your message has been sent. We'll get back to you shortly.
+          </p>
+        }
+        @if (sendStatus === 'error') {
+          <p class="contact-form__status contact-form__status--error font-body">
+            Something went wrong sending your message. Please try again, or email us directly at general@maliban.com.
+          </p>
+        }
+      </form>
+
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       VISIT — map band with overlaid address card
+  ═══════════════════════════════════════ -->
+  <section class="contact-map" id="map">
+    <div class="wrap contact-map__head">
+      <span class="section-label font-body">Find Us</span>
+      <h2 class="font-display">Visit the <span>factory floor.</span></h2>
+    </div>
+
+    <div class="contact-map__frame wrap">
+      <iframe
+        src="https://www.google.com/maps?q=No+261+Siri+Dhamma+Mawatha+Colombo+10+Sri+Lanka&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+
+      <div class="contact-map__card">
+        <span class="contact-map__card-icon"><i class="fa-solid fa-location-dot"></i></span>
+        <h3 class="font-body">Maliban Wovens (Pvt) Ltd</h3>
+        <p class="font-body">No 261, Siri Dhamma MW, Colombo 10.</p>
+        <a href="https://www.google.com/maps?q=No+261+Siri+Dhamma+Mawatha+Colombo+10+Sri+Lanka" target="_blank" rel="noopener" class="text-link font-body">Get Directions →</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       CTA — ghost-monogram banner
+  ═══════════════════════════════════════ -->
+  <section class="contact-cta">
+    <img class="contact-cta__img" src="assets/crew.png" alt="Maliban Wovens team">
+    <div class="contact-cta__overlay"></div>
+    <span class="contact-cta__ghost font-display" aria-hidden="true">MW</span>
+    <div class="contact-cta__content wrap">
+      <h2 class="font-display">Prefer to talk <span>directly?</span></h2>
+      <a href="tel:+94112668000" class="btn-primary font-body">Call Us Now →</a>
+    </div>
+  </section>
+
+</main>
+
+<app-footer></app-footer>

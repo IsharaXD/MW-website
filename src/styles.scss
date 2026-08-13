@@ -13,7 +13,7 @@
   --bg-3:    #132232;
   --sky:     #71a8cc;
   --sky-dim: #4a7da0;
-  --white:   #f4f2ea;
+  --white:   #f1f3f4;
   --muted:   rgba(244, 242, 234, 0.52);
   --border:  rgba(244, 242, 234, 0.08);
 
@@ -178,7 +178,8 @@ app-nav,
 app-footer,
 app-about,
 app-capabilities,
-app-innovation {
+app-innovation,
+app-contact {
   display: block;
 }
 
@@ -223,6 +224,14 @@ body:has(app-innovation) {
 app-home,
 body:has(app-home) {
   background: #f1f3f4;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ── Contact page — light canvas so rounded hero corners are visible */
+app-contact,
+body:has(app-contact) {
+  background: #f7f8f5;
   min-height: 100vh;
   position: relative;
 }

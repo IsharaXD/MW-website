@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x:hidden;
 }
 
 .scroll-reveal {
@@ -127,7 +128,7 @@
   margin-bottom: 28px;
 
   em {
-    font-style: italic;
+    font-style:normal;
     color: var(--sky);
   }
 }
@@ -186,7 +187,7 @@
   right: 0;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--border);
   /* Subtle backdrop so stats stay legible over the shader */
   background: rgba(7, 13, 18, 0.45);
@@ -206,6 +207,8 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  align-items: center;
+  text-align: center;
   padding-right: 32px;
 
   &:not(:last-child) {
@@ -280,7 +283,7 @@
   /* Light grey background */
   padding-block: 80px;
   /* Minimized from 80px to reduce space around text */
-  overflow: hidden;
+  //overflow: hidden;
   display: flex;
   align-items: center;
   min-height: 500px;
@@ -300,11 +303,11 @@
   width: 100%;
   /* Cone is 700px wide at right:-264px = ~436px visible on screen.
      Add 40px gap buffer so text never overlaps the image. */
-  padding-right: 476px;
+  padding-right: 340px;
 
   @media (max-width: 1200px) {
     /* At 1200px, cone is 560px wide at right:-220px = ~340px visible */
-    padding-right: 380px;
+    padding-right: 260px;
   }
 
   @media (max-width: 1024px) {
@@ -330,13 +333,7 @@
   margin-bottom: 24px;
 }
 
-.mfg-line {
-  display: block;
-  width: 40px;
-  height: 2px;
-  background-color: var(--sky);
-  margin-bottom: 24px;
-}
+
 
 .mfg-desc {
   color: #666;
@@ -391,6 +388,8 @@
 .mfg-stat-label {
   color: #666;
   text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .mfg-stat-text-only {
@@ -469,36 +468,26 @@
 /* ═══════════════════════════════════════
    WHAT WE DO — SERVICES SECTION
    ═══════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   WHAT WE DO — numbered service cards
+   Header block on top, full-width grid of rounded image
+   cards below, each numbered with a vertical label running
+   bottom-to-top along the left edge.
+   ═══════════════════════════════════════ */
 .services {
-  display: flex;
-  min-height: 500px;
-  overflow: hidden;
+  background-color: #f1f3f4;
+  padding-block: 88px;
+  padding-inline: max(56px, calc((100vw - 1836px) / 2 + 56px));
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    height: auto;
+  @media (max-width: 640px) {
+    padding-inline: 24px;
+    padding-block: 56px;
   }
 }
 
-/* ── Left intro panel ── */
-.services-intro {
-  flex: 0 0 320px;
-  background-color: #f1f3f4;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-block: 40px;
-  padding-right: 80px;
-  padding-left: max(56px, calc((100vw - 1836px) / 2 + 56px));
-  border-right: none;
-
-  @media (max-width: 640px) {
-    flex: none;
-    min-width: unset;
-    padding: 32px 24px;
-    border-right: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  }
+.services-header {
+  margin-bottom: 48px;
+  max-width: 800px;
 }
 
 .services-eyebrow {
@@ -507,27 +496,20 @@
   margin-bottom: 12px;
 }
 
-.services-rule {
-  display: block;
-  width: 32px;
-  height: 2px;
-  background: #b0a090;
-  margin-bottom: 20px;
-}
 
 .services-heading {
   color: #4a5a6a;
-   margin-bottom: 24px;
+  margin-bottom: 24px;
   text-transform: uppercase;
 }
 
 .services-link {
   display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    text-transform: uppercase;
-    color: var(--sky-dim);
-    transition: color 0.2s ease, gap 0.2s ease;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  color: var(--sky-dim);
+  transition: color 0.2s ease, gap 0.2s ease;
 
   svg {
     transition: transform 0.2s ease;
@@ -543,37 +525,39 @@
   }
 }
 
-/* ── Service panels strip ── */
+/* ── Card grid ── */
 .services-panels {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .service-panel {
-  flex: 1;
   position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 18px;
 
-  /* Hover: expand the panel */
   &:hover .service-panel-bg {
-    transform: scale(1.07);
-  }
-
-  /* Hover: add a soft white wash without darkening the image */
-  &:hover .service-panel-overlay {
-    background: transparent ;
-  }
-  
-
-  /* Subtle dividers between panels */
-  &:not(:last-child) {
-    border-right: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-  @media (max-width: 768px) {
-    min-height: 180px;
+    transform: scale(1.06);
   }
 }
 
@@ -582,60 +566,49 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: transform 0.5s ease;
-  /* Zoom slightly to give room for the hover scale */
+  transition: transform 0.6s ease;
   transform: scale(1.02);
 }
 
 .service-panel-overlay {
   position: absolute;
   inset: 0;
-  /* Subtle dark gradient keeps content readable without washing out the image */
-  background: linear-gradient(180deg, rgba(7, 13, 18, 0.18) 0%, rgba(154, 167, 179, 0.5) 100%);
-  transition: background 0.4s ease;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 13, 18, 0.05) 0%,
+    rgba(7, 13, 18, 0.15) 55%,
+    rgba(7, 13, 18, 0.6) 100%
+  );
 }
 
-.service-panel-content {
+.service-index {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-  padding: 24px 16px;
-  text-align: center;
-}
-
-.service-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-  color: #f5f2eb;
-  opacity: 0.95;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-
-  .service-panel:hover & {
-    opacity: 1;
-    transform: translateY(-2px);
-  }
+  align-self: flex-start;
+  color: var(--sky);
+  margin-bottom: auto;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .service-label {
+  position: relative;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   text-transform: uppercase;
-  color: #f5f2eb;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.04em;
+  color: var(--white);
+  line-height: 1.35;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  align-self: flex-start;
+  margin: 0;
 }
 
 /* ═══════════════════════════════════════
    TRUSTED BY — LOGO MARQUEE
    ═══════════════════════════════════════ */
 .trusted-by {
-  background: #ffffff; // same white as .services-intro, no new color introduced
+  background: var(--white); // same white as .services-intro, no new color introduced
   padding-block: 64px 56px;
   overflow: hidden;
 }
@@ -706,20 +679,31 @@
 .sustainability {
   display: flex;
   flex-direction: column;
+  background-color: #f1f3f4;   // page bg shows around the inset panel
+  padding-block: 64px;
+
+  @media (max-width: 768px) {
+    padding-block: 40px;
+  }
 }
 
-/* ── Dark half ── */
 .sustain-top {
   position: relative;
   background-color: var(--bg);
   overflow: hidden;
   padding-block: 96px;
+  border-radius: 20px;
+
+  /* Inset the whole dark panel from the viewport edges instead of
+     bleeding full-bleed like a footer band. Margin-inline matches the
+     .wrap gutter so the panel aligns with content above/below it. */
+  margin-inline: max(24px, calc((100vw - 1836px) / 2 + 56px));
 
   @media (max-width: 768px) {
     padding-block: 64px;
+    margin-inline: 16px;
   }
 }
-
 .sustain-bg {
   position: absolute;
   inset: 0;
@@ -728,6 +712,7 @@
   object-fit: cover;
   object-position: right center;
   opacity: 1;
+  border-radius: 20px;
 }
 
 .sustain-overlay {
@@ -791,6 +776,8 @@
   justify-content: space-between;
   gap: 24px;
 
+
+  
   @media (max-width: 640px) {
     flex-wrap: wrap;
     gap: 40px 24px;
@@ -924,7 +911,7 @@
    TRUSTED BY — LOGO MARQUEE
    ═══════════════════════════════════════ */
 .trusted-by {
-  background: #ffffff; // same white as .services-intro, no new color introduced
+  background: #f1f3f4; // same white as .services-intro, no new color introduced
   padding-block: 64px 56px;
   overflow: hidden;
 }
@@ -989,3 +976,200 @@
   }
 }
 
+/* ═══════════════════════════════════════
+   CERTIFICATION SECTION — editorial split layout
+   Left: bold heading + stat callouts
+   Right: 4×2 badge grid with hover micro-animations
+   ═══════════════════════════════════════ */
+
+.cert-grid-section {
+  background: #f1f3f4;
+  padding-block: 96px;
+
+  @media (max-width: 768px) {
+    padding-block: 64px;
+  }
+}
+
+/* ── Two-column inner ── */
+.cg-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+}
+
+/* ── Left column ── */
+.cg-left {
+  position: sticky;
+  top: 100px;
+
+  @media (max-width: 1024px) {
+    position: static;
+  }
+}
+
+.cg-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.20em;
+  color: var(--sky-dim);
+  font-size: 0.72rem;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+
+}
+
+.cg-heading {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  color: var(--bg);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.cg-sub {
+  color: rgba(7, 13, 18, 0.52);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  max-width: 38ch;
+  margin-bottom: 44px;
+}
+
+/* ── Stat callouts ── */
+.cg-stat-row {
+  display: flex;
+  gap: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(7, 13, 18, 0.10);
+}
+
+.cg-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  strong {
+    font-size: 2rem;
+    color: var(--bg);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: rgba(7, 13, 18, 0.45);
+  }
+}
+
+/* ── Right column ── */
+.cg-right {
+  width: 100%;
+}
+
+/* ── Badge grid: 4 across, 2 rows ── */
+.cg-badge-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+.cg-badge-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(7, 13, 18, 0.07);
+  border-radius: 14px;
+  padding: 24px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+
+  /* bottom sky underline */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    border-radius: 2px 2px 0 0;
+    background: var(--sky);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(7, 13, 18, 0.12);
+    box-shadow:
+      0 2px 8px rgba(7, 13, 18, 0.04),
+      0 8px 32px rgba(7, 13, 18, 0.09);
+
+    &::after { transform: scaleX(1); }
+
+    .cg-badge-img {
+      border-color: rgba(90, 180, 220, 0.4);
+      background: rgba(90, 180, 220, 0.04);
+    }
+
+    .cg-badge-img img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.cg-badge-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(7, 13, 18, 0.09);
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  flex-shrink: 0;
+
+  img {
+    width: 56%;
+    height: 56%;
+    object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+.cg-badge-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--bg);
+}
+
+.cg-badge-desc {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(7, 13, 18, 0.38);
+  line-height: 1.4;
+}

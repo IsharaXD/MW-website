@@ -19,6 +19,7 @@
   --r-sm: 8px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 /* ==========================================
    Page Container (same as Home)
 ========================================== */
@@ -192,17 +193,12 @@ p {
   align-items: center;
   gap: 10px;
   font-family: var(--body);
-  font-size: 11px;
+  font-size: 1.1rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--rust);
+  color: var(--sky);
 
-  .eyebrow__line {
-    flex: 0 0 auto;
-    width: 20px;
-    height: 1.5px;
-    background: var(--rust);
-  }
+
 }
 
 // ── Buttons ────────────────────────────────────────────────
@@ -333,7 +329,8 @@ p {
   @extend .hero;
 }
 
-.hero-image, .cap-hero__img {
+.hero-image,
+.cap-hero__img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -341,7 +338,8 @@ p {
   object-fit: cover;
 }
 
-.hero-overlay, .cap-hero__overlay {
+.hero-overlay,
+.cap-hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.30) 48%, rgba(0, 0, 0, 0.08) 100%);
@@ -381,7 +379,8 @@ p {
   }
 }
 
-.hero-content, .cap-hero__content {
+.hero-content,
+.cap-hero__content {
   position: relative;
   z-index: 2;
   max-width: 600px;
@@ -423,11 +422,11 @@ p {
 .section {
   position: relative;
   z-index: 1;
-  padding: 90px 0;
+  padding: 50px 0;
   background: var(--white);
 
   @media (max-width: 768px) {
-    padding: 60px 0;
+    padding: 30px 0;
   }
 
   &+.section {
@@ -530,14 +529,14 @@ p {
 //  OUR STORY
 // ─────────────────────────────────────────────────────────────
 .section--story {
-  background: var(--white);
+  background: #f1f3f4;
 }
 
 .story-layout {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 60px;
-  align-items: start;
+  align-items: stretch;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
@@ -549,7 +548,7 @@ p {
   position: relative;
   border-radius: var(--r-card);
   overflow: hidden;
-  aspect-ratio: 16/11;
+  height: 100%;
 
   img {
     width: 100%;
@@ -689,145 +688,326 @@ p {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  VISION, MISSION & VALUES
+//  OUR FOOTPRINT — SRI LANKA MAP + FACTORY LOCATIONS
 // ─────────────────────────────────────────────────────────────
-.section--vmv {
-  background: var(--white);
-  color: var(--bg);
-
-  .eyebrow {
-    color: var(--sky);
-
-    .eyebrow__line {
-      background: var(--sky);
-    }
-  }
-
-  .section__header h2 {
-    color: var(--navy);
-  }
-
-  .section__header p {
-    color: var(--muted);
-  }
+.section--footprint {
+  background: var(--cream);
 }
 
-.vmv-layout {
+.footprint-layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 56px;
+  align-items: center;
+  margin-top: 8px;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+// ── Map ──────────────────────────────────────────────────────
+// Pins are absolutely positioned via inline left/top % (set per-pin in the
+// template) relative to .footprint-map. Since that box is a flex container
+// just wrapping a max-width image, position: relative + inline-flex keeps
+// its box matched to the image's rendered size, so the % coordinates land
+// correctly regardless of viewport width.
+.footprint-map {
+  position: relative;
+  display: inline-flex;
+  margin-inline: auto;
+}
+
+.lk-map-img {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 12px 28px rgba(19, 43, 68, 0.14));
+}
+
+.lk-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  .lk-pin__pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--sky);
+    opacity: 0.22;
+    transform: translate(-50%, -50%);
+    animation: threadPulse 2.6s ease-in-out infinite;
+  }
+
+  .lk-pin__dot {
+    position: relative;
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--rust);
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 6px rgba(19, 43, 68, 0.3);
+    transition: transform var(--transition), background var(--transition);
+  }
+
+  .lk-pin__label {
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translate(-4px, -50%);
+    white-space: nowrap;
+    font-family: var(--body);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--white);
+    padding: 3px 9px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(19, 43, 68, 0.14);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition), transform var(--transition);
+
+    &.lk-pin__label--left {
+      left: auto;
+      right: calc(100% + 8px);
+      transform: translate(4px, -50%);
+    }
+  }
+
+  &:hover {
+    z-index: 2;
+
+    .lk-pin__dot {
+      background: var(--sky);
+      transform: scale(1.35);
+    }
+
+    .lk-pin__label {
+      opacity: 1;
+      transform: translate(0, -50%);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .lk-pin__label {
+      font-size: 11px;
+      padding: 2px 7px;
+    }
+  }
+}
+
+// ── Pin positions ────────────────────────────────────────────
+// Edit ONLY the numbers below to move a pin. `left` = horizontal position
+// (0% = left edge of the image, 100% = right edge). `top` = vertical
+// position (0% = top edge, 100% = bottom edge). Save and refresh the page
+// to see the pin move — nudge by a percent or two at a time.
+.lk-pin[data-factory="ingiriya"] {
+  left: 26.2%;
+  top: 78.1%;
+}
+
+.lk-pin[data-factory="balangoda"] {
+  left: 46.7%;
+  top: 79%;
+}
+
+.lk-pin[data-factory="nalanda"] {
+  left: 45%;
+  top: 59.6%;
+}
+
+.lk-pin[data-factory="pelmadulla"] {
+  left: 39%;
+  top: 79.9%;
+}
+
+.lk-pin[data-factory="dehiattakandiya"] {
+  left: 62.4%;
+  top: 55.8%;
+}
+
+.lk-pin[data-factory="padiyathalawa"] {
+  left: 71.3%;
+  top: 60.8%;
+}
+
+// ── Factory / associates list ───────────────────────────────
+.footprint-list {
+  background: var(--white);
+  border-radius: var(--r-card);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.footprint-list__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--navy);
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 24px;
+    color: var(--white);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    i {
+      color: var(--sky);
+      font-size: 15px;
+    }
+  }
+}
+
+.footprint-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: background var(--transition);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: rgba(91, 149, 204, 0.06);
+  }
+
+  .footprint-row__name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--navy);
+
+    i {
+      color: var(--rust);
+      font-size: 13px;
+    }
+  }
+
+  .footprint-row__count {
+    font-family: var(--disp);
+    font-size: 15.5px;
+    color: var(--navy-mid);
+  }
+}
+// Three-up card grid — locked to 3 columns down to phone width,
+// small compact cards side by side.
+.vmv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 8px;
+
+  @media (max-width: 560px) {
+    gap: 8px;
   }
 }
 
 .vmv-card {
   position: relative;
-  background: var(--white);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: var(--r-card);
-  padding: 36px 30px 32px;
+  isolation: isolate;
   overflow: hidden;
-  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--r-card);
+  transition: var(--transition);
 
   &:hover {
     transform: translateY(-6px);
-    background: rgba(0, 0, 0, 0.02);
-    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-card);
+
+    .vmv-card__bg {
+      transform: scale(1.05);
+    }
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.82);
+
+    @media (max-width: 720px) {
+      display: none;
+    }
   }
 }
 
-.vmv-card__stitch-corner {
+.vmv-card__bg {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  opacity: 0.8;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.vmv-card__icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-
-  svg {
-    width: 26px;
-    height: 26px;
-  }
+.vmv-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg,
+      rgba(19, 43, 68, 0.774) 0%,
+      rgba(19, 43, 68, 0.55) 80%,
+      rgba(19, 43, 68, 0.92) 100%);
 }
 
-.vmv-card--vision .vmv-card__icon {
-  background: rgba(91, 149, 204, 0.15);
-
-  svg {
-    stroke: var(--sky);
-  }
+.vmv-card__content {
+  position: relative;
+  z-index: 2;
+  padding: 16px 16px 18px;
 }
 
-.vmv-card--mission .vmv-card__icon {
-  background: rgba(181, 67, 46, 0.15);
-
-  svg {
-    stroke: #e07060;
-  }
-}
-
-.vmv-card--values .vmv-card__icon {
-  background: rgba(47, 95, 143, 0.2);
-
-  svg {
-    stroke: #8ab4d4;
-  }
-}
-
-.vmv-card__label {
-  display: block;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.vmv-card h3 {
-  font-size: 22px;
-  color: var(--navy);
-  margin-bottom: 12px;
-  font-weight: 400;
-}
-
-.vmv-card p {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.vmv-values-list {
+.vmv-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 5px;
+  margin-top: 10px;
+
+  @media (max-width: 720px) {
+    display: none;
+  }
 
   span {
-    background: rgba(91, 149, 204, 0.12);
-    border: 1px solid rgba(91, 149, 204, 0.25);
-    color: var(--sky);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
     border-radius: 999px;
-    padding: 5px 13px;
-    font-size: 12px;
+    padding: 3px 9px;
+    font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.02em;
     transition: background var(--transition);
 
     &:hover {
-      background: rgba(91, 149, 204, 0.22);
+      background: rgba(255, 255, 255, 0.26);
     }
   }
 }
@@ -1001,13 +1181,46 @@ p {
 
 .lead-card__back {
   transform: rotateY(180deg);
-  background: rgba(14, 20, 26, 0.849);
-  border: 1px solid rgba(91, 149, 204, 0.3);
+  background-image: url('/assets/bg.png');
+  background-size: cover;
+  background-position: center;
   box-shadow: 0 0 50px -14px rgba(91, 149, 204, 0.35);
   padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
+
+  // hide the HTML img — we use CSS background-image instead
+  img {
+    display: none;
+  }
+
+  // dark overlay so text stays legible over the image
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    // background: rgba(8, 14, 22, 0.72);
+    z-index: 0;
+    border-radius: inherit;
+  }
+
+  // white outline ring — sits above image and overlay
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-radius: calc(var(--r-card) - 4px);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  // text content sits above the dark overlay
+  >*:not(img) {
+    position: relative;
+    z-index: 1;
+  }
 
   h3 {
     font-size: 16px;
@@ -1066,192 +1279,131 @@ p {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  COMPANY TIMELINE
 // ─────────────────────────────────────────────────────────────
-.section--timeline {
-  background: var(--white);
-}
-
-.timeline-track-wrap {
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-bottom: 24px;
-  cursor: grab;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain; // stops the drag/swipe from being handed off to browser back/forward navigation
-  scroll-behavior: smooth;
-  outline: none;
-
-  &:active {
-    cursor: grabbing;
-  }
-
-  &:focus-visible {
-    box-shadow: inset 0 0 0 2px var(--navy-mid);
-    border-radius: var(--r-sm);
-  }
-
-  &::-webkit-scrollbar {
-    height: 3px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(47, 95, 143, 0.06);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(47, 95, 143, 0.25);
-    border-radius: 99px;
-  }
-}
-
-// Header row with the "Our Journey" title and the nav buttons
-.section__header--timeline {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.tl-nav {
-  display: flex;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.tl-nav__btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(19, 43, 68, 0.15);
-  background: var(--white);
-  color: var(--navy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
-
-  &:hover:not(:disabled) {
-    background: var(--navy);
-    color: var(--white);
-    border-color: var(--navy);
-    transform: translateY(-2px);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--navy-mid);
-    outline-offset: 2px;
-  }
-
-  &:disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-  }
-}
-
-@media (max-width: 640px) {
-  .section__header--timeline {
-    flex-wrap: wrap;
-  }
-}
-
-.timeline-track {
-  display: flex;
-  gap: 0;
-  padding: 32px 40px 24px;
-  position: relative;
-  min-width: max-content;
-}
-
-// Running thread line behind all milestones
-.tl-thread {
-  position: absolute;
-  top: 39px; // aligned to the dot row
-  left: 80px;
-  right: 80px;
-  height: 2px;
-  background: repeating-linear-gradient(90deg,
-      var(--navy-mid) 0,
-      var(--navy-mid) 5px,
-      transparent 5px,
-      transparent 11px);
-  opacity: 0.22;
-}
-
-.tl-milestone {
-  flex-shrink: 0;
-  width: 300px;
-  padding: 0 20px;
-  position: relative;
-
-  h3 {
-    font-size: 17px;
-    color: var(--navy);
-    margin: 14px 0 6px;
-    font-weight: 500;
-  }
-
-  p {
-    font-size: 13px;
-    line-height: 1.6;
-  }
-}
-
-.tl-milestone__dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
+//  COMPANY JOURNEY (TIMELINE)
+// ─────────────────────────────────────────────────────────────
+.section--journey {
   background: var(--cream);
-  border: 2.5px solid var(--navy-mid);
-  margin: 0 auto 24px;
-  position: relative;
-  z-index: 2;
-  transition: transform var(--transition), background var(--transition);
+  padding: 100px 0;
+}
 
-  .tl-milestone:hover & {
-    background: var(--navy-mid);
-    transform: scale(1.25);
+.journey-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+
+  button {
+    background: transparent;
+    border: 1px solid rgba(19, 43, 68, 0.15);
+    color: var(--navy);
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+
+    &:hover {
+      background: rgba(19, 43, 68, 0.05);
+    }
+
+    &.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      box-shadow: 0 4px 12px rgba(19, 43, 68, 0.2);
+    }
   }
 }
 
-.tl-milestone--current .tl-milestone__dot {
-  background: var(--rust);
-  border-color: var(--rust);
-  box-shadow: 0 0 0 4px rgba(181, 67, 46, 0.18);
+.journey-cards {
+  position: relative;
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 20px;
 }
 
-.tl-milestone__img {
-  position: relative;
-  border-radius: var(--r-sm);
+.journey-card {
+  display: none;
+  background: var(--white);
+  border-radius: var(--r-card);
   overflow: hidden;
-  height: 200px;
+  box-shadow: 0 12px 40px rgba(19, 43, 68, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  height: 420px;
+
+  &.active {
+    display: flex;
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column !important;
+    height: auto;
+  }
+}
+
+.journey-card__image {
+  flex: 0 0 50%;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    flex: 0 0 auto;
+    height: 260px;
+  }
 
   img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease;
-  }
-
-  &:hover img {
-    transform: scale(1.06);
   }
 }
 
-.tl-milestone__year {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: rgba(19, 43, 68, 0.85);
-  color: var(--cream);
+.journey-card__content {
+  flex: 1;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    padding: 32px 24px;
+  }
+
+  h3 {
+    font-size: 26px;
+    color: var(--navy);
+    margin: 16px 0 20px;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+}
+
+.journey-card__year {
+  display: inline-block;
+  align-self: flex-start;
+  background: rgba(91, 149, 204, 0.12);
+  color: var(--sky);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  padding: 5px 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 8px 16px;
   border-radius: 999px;
+  border: 1px solid rgba(91, 149, 204, 0.25);
 }
 
 // ─────────────────────────────────────────────────────────────
