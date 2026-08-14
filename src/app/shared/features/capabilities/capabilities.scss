@@ -33,16 +33,16 @@
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--sky);
-  font-size: 1rem;
+  font-size: clamp(0.8125rem, 0.25vw + 0.75rem, 0.9375rem);
 }
 
 .text-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   color: var(--sky);
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: clamp(0.875rem, 0.25vw + 0.8rem, 0.9375rem);
   transition: color 0.2s;
 
   &:hover {
@@ -53,8 +53,8 @@
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 30px;
+  gap: 5px;
+  padding: 9px 20px;
   background: var(--sky);
   color: var(--bg);
   text-transform: uppercase;
@@ -72,12 +72,22 @@
 // ─────────────────────────────────────────────
 .hero {
   position: relative;
-  height: 720px;
+  // Matches Home's hero exactly: 100svh, full-bleed, no border-radius.
+  min-height: 100svh;
+  height: 100svh;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
-  padding: 150px 7% 90px;
-  border-radius: 0 0 35px 35px;
+  padding: 100px 7% 60px;
+
+  // Below 768px the stat rail becomes a full-width bottom bar (see
+  // .cap-hero__rail), same as Home's hero-stats sitting under the
+  // headline in normal flow — so the hero needs to stack vertically
+  // here instead of just bottom-aligning a single row.
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding-bottom: 0;
+  }
 }
 
 .cap-hero {
@@ -102,28 +112,57 @@
 
 .cap-hero__rail {
   position: absolute;
-  top: 140px;
+  top: 160px;
   right: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 26px;
   align-items: flex-end;
 
+  // Home's hero keeps its stat strip visible at every width — it just
+  // reflows from a row into a 2-col grid at 640px. This rail used to
+  // just disappear below 768px instead of reflowing, which is why the
+  // stat cards were "missing" on mobile. Match Home's pattern: drop
+  // out of the corner, become a full-width bar pinned to the bottom
+  // of the hero (same border-top / blurred-backdrop treatment as
+  // Home's .hero-stats), with the headline given room to breathe
+  // above it via flex ordering.
   @media (max-width: 768px) {
-    display: none;
+    position: static;
+    order: 2;
+    top: auto;
+    right: auto;
+    z-index: 2;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding: 16px 5%;
+    border-top: 1px solid var(--border);
+    background: rgba(7, 13, 18, 0.45);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .rail-stat {
   text-align: right;
-  padding-right: 4px;
+  padding-right: 3px;
   border-right: 1px solid var(--border);
-  padding-right: 18px;
+  padding-right: 16px;
 
   strong {
     display: block;
-    font-size: 1.5rem;
+    font-size: clamp(2rem, 2.6vw, 2.5rem);
     color: var(--white);
   }
 
@@ -131,7 +170,21 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
-    font-size: 0.68rem;
+    font-size: clamp(0.875rem, 0.25vw + 0.8rem, 0.9375rem);
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+    padding-right: 8px;
+    padding-inline: 8px;
+
+    strong {
+      font-size: clamp(1.375rem, 5vw, 1.75rem);
+    }
+
+    &:last-child {
+      border-right: none;
+    }
   }
 }
 
@@ -139,21 +192,32 @@
 .cap-hero__content {
   position: relative;
   z-index: 2;
-  max-width: 600px;
+  max-width: 460px;
   color: var(--white);
   text-align: left;
+
+  @media (max-width: 768px) {
+    order: 1;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-width: none;
+    padding-bottom: 24px;
+  }
 
   .eyebrow {
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.85);
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 13px;
   }
 
   h1 {
     color: var(--white);
     font-weight: 500;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
     span {
       color: var(--sky);
@@ -161,9 +225,11 @@
   }
 
   p {
-    max-width: 460px;
-    margin-bottom: 30px;
+    max-width: 360px;
+    margin-bottom: 20px;
     color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1.125rem, 0.35vw + 1.05rem, 1.25rem);
+    line-height: 1.7;
   }
 }
 
@@ -172,15 +238,15 @@
 // ─────────────────────────────────────────────
 .cap-rows {
   background: var(--white);
-  padding-block: 75px;
+  padding-block: 50px;
 }
 
 .cap-row {
   display: grid;
   grid-template-columns: 1.1fr 1.1fr;
-  gap: 42px;
+  gap: 28px;
   align-items: center;
-  padding-block: 10px;
+  padding-block: 7px;
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--border);
@@ -200,8 +266,8 @@
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding-block: 24px;
+    gap: 16px;
+    padding-block: 16px;
 
     &--reverse {
       grid-template-columns: 1fr;
@@ -239,13 +305,13 @@
   .row-index {
     display: block;
     color: var(--bg);
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+    font-size: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);
+    margin-bottom: 5px;
   }
 
   h2 {
-    font-size: clamp(1.8rem, 3vw, 2.7rem);
-    margin-bottom: 12px;
+    font-size: clamp(1.625rem, 2.3vw, 2.375rem);
+    margin-bottom: 8px;
     color: var(--bg);
 
     span {
@@ -266,7 +332,7 @@
 //  MARQUEE SECTIONS (shared by "What We Make" and "Facilities")
 // ─────────────────────────────────────────────
 .cap-marquee-section {
-  padding-block: 60px 68px;
+  padding-block: 40px 45px;
   background: var(--white);
 }
 
@@ -275,7 +341,7 @@
 }
 
 .cap-marquee-section__head {
-  margin-bottom: 32px;
+  margin-bottom: 21px;
 }
 
 .cap-marquee {
@@ -287,13 +353,13 @@
 
 .cap-marquee__track {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   width: max-content;
   animation: capMarquee 34s linear infinite;
 }
 
 .cap-marquee__track--reverse {
-  animation: capMarqueeReverse 40s linear infinite;
+  animation: capMarqueeReverse 46s linear infinite;
 }
 
 .cap-marquee:hover .cap-marquee__track {
@@ -302,8 +368,8 @@
 
 .marq-card {
   position: relative;
-  flex: 0 0 280px;
-  height: 350px;
+  flex: 0 0 187px;
+  height: 233px;
   border-radius: 16px;
   overflow: hidden;
 
@@ -316,28 +382,28 @@
 
   span {
     position: absolute;
-    left: 15px;
-    top: 14px;
+    left: 10px;
+    top: 9px;
     color: var(--white);
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);
     letter-spacing: 0.60em;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     font-weight: 600;
   }
 
   &--lg {
-    flex-basis: 420px;
+    flex-basis: 367px;
     height: 300px;
   }
 
   @media (max-width: 640px) {
-    flex-basis: 220px;
-    height: 280px;
+    flex-basis: 147px;
+    height: 187px;
 
     &--lg {
-      flex-basis: 320px;
-      height: 230px;
+      flex-basis: 240px;
+      height: 172px;
     }
   }
 }
@@ -347,18 +413,18 @@
 //  Vertical left-aligned labels, diagonal photo bleed
 // ─────────────────────────────────────────────
 .cap-showcase {
-  padding-block: 60px 68px;
+  padding-block: 40px 45px;
   background: var(--white);
 }
 
 .cap-showcase__head {
-  margin-bottom: 32px;
+  margin-bottom: 21px;
 }
 
 .cap-showcase__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 13px;
 
   @media (max-width: 900px) {
     grid-template-columns: repeat(2, 1fr);
@@ -366,71 +432,100 @@
 
   @media (max-width: 560px) {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 20px;
   }
 }
 
-.showcase-card {
+.showcase-group {
   position: relative;
-  aspect-ratio: 6 / 4;
-  min-height: 320px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: var(--bg);
 
   &__num {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 2;
+    top: 13px;
+    left: 13px;
+    z-index: 3;
     color: var(--sky);
-    font-size: 1rem;
-  }
-
-  &__img {
-    position: absolute;
-    inset: 0;
-    //clip-path: polygon(17% 0%, 100% 0%, 100% 100%, 39% 100%);
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-  }
-
-  &:hover .showcase-card__img img {
-    transform: scale(1.05);
-  }
-
-  &__stat {
-    position: absolute;
-    right: 20px;
-    bottom: 24px;
-    z-index: 2;
-    color: var(--sky);
-    font-size: 0.95rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-size: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);
   }
 
   &__label {
     position: absolute;
-    left: 22px;
-    bottom: 24px;
-    z-index: 2;
+    left: 15px;
+    bottom: 16px;
+    z-index: 3;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    color: var(--white);
+    color: var(--bg);
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    font-size: 1.3rem;
-    max-height: calc(100% - 70px);
+    font-size: clamp(1.1875rem, 0.4vw + 1.1rem, 1.3125rem);
+    max-height: calc(50% - 30px);
     font-weight: 600;
+
+    // On mobile, vertical writing-mode text ("WOVEN BOTTOMS",
+    // "SUITING & OUTER WEAR") is taller than the 160px main tile can
+    // hold at this font-size. Once a vertical-rl block runs out of
+    // block-size it wraps into a NEW column instead of a new line —
+    // and with the rotate(180deg) flip, that second column renders
+    // to the left of the first, overlapping the tile beside/below it
+    // (this is the "double vertical text" overlap bug). Rather than
+    // keep shrinking to try to out-fit the label, drop the vertical
+    // treatment on mobile entirely: lay the label out horizontally
+    // in normal flow below the gallery, where it can't collide with
+    // anything.
+    @media (max-width: 560px) {
+      position: static;
+      writing-mode: horizontal-tb;
+      transform: none;
+      display: block;
+      margin-top: 10px;
+      max-height: none;
+      white-space: normal;
+      color: var(--bg);
+      font-size: clamp(0.9375rem, 1vw + 0.75rem, 1.0625rem);
+    }
   }
+}
+
+.showcase-group__gallery {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+  aspect-ratio: 6 / 4;
+  min-height: 213px;
 
   @media (max-width: 560px) {
-    min-height: 320px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 100px;
+    min-height: 0;
+  }
+}
+
+.showcase-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--bg);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.06);
+  }
+
+  &--main {
+    grid-row: 1 / 3;
+
+    @media (max-width: 560px) {
+      grid-row: 1;
+      grid-column: 1 / 3;
+    }
   }
 }
 
@@ -440,7 +535,7 @@
 
 .innovation-timeline {
 
-  padding: 7rem 0;
+  padding: 4.669rem 0;
   background: var(--white);
   overflow: hidden;
 
@@ -449,11 +544,11 @@
 .innovation-header {
 
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3.335rem;
 
   h2 {
 
-    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    font-size: clamp(2rem, 3.6vw, 3.25rem);
     color: var(--bg);
 
     span {
@@ -465,11 +560,11 @@
   }
 
   .innovation-intro {
-    max-width: 680px;
-    margin: 1.4rem auto 0;
+    max-width: 720px;
+    margin: 0.934rem auto 0;
     color: rgba(7, 13, 18, 0.62);
     line-height: 1.7;
-    font-size: 1rem;
+    font-size: clamp(1.125rem, 0.35vw + 1.05rem, 1.25rem);
   }
 
 }
@@ -482,7 +577,7 @@
 
   grid-template-columns: repeat(4, 1fr);
 
-  gap: 2rem;
+  gap: 1.334rem;
 
   align-items: start;
 
@@ -492,11 +587,11 @@
 
   position: absolute;
 
-  top: 10px;
+  top: 7px;
   left: 12%;
   right: 12%;
 
-  height: 2px;
+  height: 1px;
 
   background: #d7d7d7;
 
@@ -518,10 +613,10 @@
 
 .timeline-dot {
 
-  width: 20px;
-  height: 20px;
+  width: 13px;
+  height: 13px;
 
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.334rem;
 
   border-radius: 50%;
 
@@ -542,7 +637,7 @@
 
   overflow: hidden;
 
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 
   box-shadow: 0 18px 40px rgba(0, 0, 0, .12);
 
@@ -563,21 +658,21 @@
 
   display: block;
 
-  font-size: .9rem;
+  font-size: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);
 
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 
   color: var(--sky);
 
-  margin-bottom: .7rem;
+  margin-bottom: 0.467rem;
 
 }
 
 .timeline-card h3 {
 
-  font-size: 1.4rem;
+  font-size: clamp(1.375rem, 1.2vw + 1.1rem, 1.625rem);
 
-  margin-bottom: 1rem;
+  margin-bottom: 0.667rem;
 
   color: var(--bg);
 
@@ -589,7 +684,7 @@
 
   line-height: 1.7;
 
-  max-width: 260px;
+  max-width: 280px;
 
   margin: auto;
 
@@ -621,7 +716,7 @@
 
     grid-template-columns: repeat(2, 1fr);
 
-    row-gap: 4rem;
+    row-gap: 2.668rem;
 
   }
 
@@ -643,13 +738,13 @@
 
     grid-template-columns: 1fr;
 
-    gap: 4rem;
+    gap: 2.668rem;
 
   }
 
   .timeline-card {
 
-    max-width: 380px;
+    max-width: 253px;
 
     margin: auto;
 
@@ -657,7 +752,7 @@
 
   .timeline-dot {
 
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 
   }
 
@@ -669,20 +764,20 @@
 .cap-thread {
   position: relative;
   background: var(--white);
-  padding-block: 56px;
+  padding-block: 37px;
   overflow: hidden;
 
-  > * {
+  >* {
     position: relative;
     z-index: 1;
   }
 }
 
 .cap-thread__head {
-  margin-bottom: 44px;
+  margin-bottom: 29px;
 
   h2 {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-size: clamp(1.625rem, 2.3vw, 2.375rem);
     color: var(--bg);
 
     span {
@@ -699,10 +794,10 @@
 
   // edge fade so the scroll affordance reads as intentional, not clipped
   @media (max-width: 1100px) {
-    margin-inline: calc(-1 * var(--wrap-pad, 24px));
-    padding-inline: var(--wrap-pad, 24px);
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+    margin-inline: calc(-1 * var(--wrap-pad, 16px));
+    padding-inline: var(--wrap-pad, 16px);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--wrap-pad, 16px), #000 calc(100% - var(--wrap-pad, 16px)), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 var(--wrap-pad, 16px), #000 calc(100% - var(--wrap-pad, 16px)), transparent 100%);
   }
 }
 
@@ -713,28 +808,29 @@
   gap: 0;
 
   // connecting rail running through every node's center — nodes sit on
-  // top of it, so no separate arrow elements are needed between steps
+  // top of it, so no separate arrow elements are needed between steps.
+  // Uses a native dashed border rather than a repeating-linear-gradient
+  // background: gradients tiled across a long, percentage-based width
+  // are prone to sub-pixel rounding gaps at fractional display scaling
+  // (125%/150% Windows scaling, etc.), which is what was making the
+  // dashes vanish partway across the row on some machines. A dashed
+  // border has no tiling math to round — it renders identically at
+  // any width or DPI.
   &::before {
     content: "";
     position: absolute;
-    top: 27px;
+    top: 42px;
     left: 6%;
     right: 6%;
-    height: 2px;
-    background: repeating-linear-gradient(
-      90deg,
-      var(--sky) 0,
-      var(--sky) 6px,
-      transparent 6px,
-      transparent 12px
-    );
+    height: 0;
+    border-top: 1px dashed var(--sky);
     z-index: 0;
   }
 
   @media (max-width: 1100px) {
     overflow-x: auto;
     scroll-snap-type: x proximity;
-    padding-block: 4px 12px;
+    padding-block: 3px 8px;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -742,8 +838,8 @@
     }
 
     &::before {
-      left: 30px;
-      right: 30px;
+      left: 20px;
+      right: 20px;
     }
   }
 }
@@ -752,27 +848,31 @@
   position: relative;
   z-index: 1;
   flex: 1 1 0;
-  min-width: 132px;
+  min-width: 88px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-inline: 10px;
+  padding-inline: 7px;
 
   @media (max-width: 1100px) {
-    flex: 0 0 150px;
+    flex: 0 0 100px;
     scroll-snap-align: start;
   }
 }
 
 .flow-step__node {
   position: relative;
-  margin-bottom: 14px;
+  margin-bottom: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
 .flow-step__icon {
-  width: 54px;
-  height: 54px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: var(--white);
   border: 1px solid var(--sky);
@@ -782,28 +882,27 @@
   transition: background 0.35s ease, border-color 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   i {
-    font-size: 1.1rem;
+    font-size: clamp(1.0625rem, 0.3vw + 1rem, 1.1875rem);
     color: var(--sky-dim);
     transition: color 0.35s ease;
   }
 }
 
 .flow-step__num {
-  position: absolute;
-  top: -4px;
-  right: -6px;
-  min-width: 20px;
-  height: 20px;
+  // sits above the icon in normal flow now, not stacked on its corner
+  order: -1;
+  position: static;
+  min-width: 18px;
+  height: 18px;
   padding-inline: 4px;
   border-radius: 999px;
   background: linear-gradient(160deg, var(--sky) 0%, var(--sky-dim) 100%);
   color: var(--bg);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 3px var(--white);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -825,9 +924,9 @@
   color: var(--bg);
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 0.82rem;
+  font-size: clamp(0.875rem, 0.25vw + 0.8rem, 0.9375rem);
   letter-spacing: 0.03em;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   transition: color 0.3s ease;
 }
 
@@ -837,12 +936,130 @@
 
 .flow-step__desc {
   color: var(--bg);
-  font-size: 0.72rem;
+  font-size: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);
   line-height: 1.5;
   max-width: 15em;
 }
 
 
+
+// ─────────────────────────────────────────────
+//  PROCESS VIDEO — full-bleed player between Process and Facilities
+// ─────────────────────────────────────────────
+.cap-video {
+  background: var(--white);
+  padding-block: 40px 60px;
+}
+
+.cap-video__head {
+  margin-bottom: 24px;
+
+  h2 {
+    font-size: clamp(1.625rem, 2.3vw, 2.375rem);
+    color: var(--bg);
+    margin-bottom: 8px;
+
+    span {
+      color: var(--sky);
+    }
+  }
+
+  p {
+    color: var(--bg);
+    line-height: 1.65;
+    max-width: 46ch;
+  }
+}
+
+// Stage: owns the side gutters directly (does NOT rely on the shared
+// .wrap class), so the card can never run edge-to-edge on wide desktop
+// screens no matter what max-width .wrap resolves to on that machine.
+.cap-video__stage {
+  width: min(1600px, calc(100% - clamp(2.5rem, 6vw, 6rem) * 2));
+  margin-inline: auto;
+
+  @media (max-width: 640px) {
+    width: min(1600px, calc(100% - 1.25rem * 2));
+  }
+}
+
+// Glass card — frosted, gradient surface that frames the video and
+// pulls focus onto it rather than the page background.
+.cap-video__card {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 22px;
+  padding: 14px;
+  overflow: hidden;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 24px 60px rgba(6, 20, 30, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  @media (max-width: 640px) {
+    border-radius: 16px;
+    padding: 8px;
+  }
+}
+
+.cap-video__el {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  object-position: center;
+  background: var(--bg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+  @media (max-width: 640px) {
+    border-radius: 10px;
+  }
+}
+
+.cap-video__fullscreen {
+  position: absolute;
+  z-index: 2;
+  right: 28px;
+  bottom: 28px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(11, 31, 46, 0.55);
+  color: var(--white);
+  font-size: 0.95rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    background: var(--sky);
+    color: var(--bg);
+    transform: scale(1.06);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sky);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    right: 14px;
+    bottom: 14px;
+    width: 38px;
+    height: 38px;
+    font-size: 0.85rem;
+  }
+}
 
 // ─────────────────────────────────────────────
 //  CTA — ghost monogram behind the headline
@@ -871,10 +1088,10 @@
 
 .cap-cta__ghost {
   position: absolute;
-  right: -40px;
-  bottom: -60px;
+  right: -27px;
+  bottom: -40px;
   z-index: 1;
-  font-size: clamp(8rem, 22vw, 22rem);
+  font-size: clamp(5.336rem, 14.674vw, 14.674rem);
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(244, 242, 234, 0.12);
   line-height: 1;
@@ -889,13 +1106,13 @@
 .cap-cta__content {
   position: relative;
   z-index: 2;
-  padding-block: 60px;
+  padding-block: 40px;
 
   h2 {
-    font-size: clamp(1.8rem, 3.4vw, 3rem);
+    font-size: clamp(1.625rem, 2.5vw, 2.625rem);
     color: var(--white);
-    max-width: 640px;
-    margin-bottom: 28px;
+    max-width: 427px;
+    margin-bottom: 19px;
 
     span {
       color: var(--sky);

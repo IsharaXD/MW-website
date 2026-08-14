@@ -4,7 +4,7 @@
   <section class="hero" id="hero">
     <!-- Video background -->
     <video autoplay loop muted [muted]="true" playsinline class="hero-video">
-      <source src="assets/mwhero.webm" type="video/mp4" />
+      <source src="https://res.cloudinary.com/gbyojmiz/video/upload/v1786683583/mwhero_jf4hcd.mp4" type="video/mp4" />
     </video>
 
     <!-- Darkening overlay so text stays readable -->
@@ -23,7 +23,7 @@
     
 
     <!-- Main hero copy -->
-    <div class="hero-content wrap">
+    <div class="hero-content">
       <p class="hero-eyebrow font-body font-size-body-sm">Maliban Group · Est. 1974</p>
 
       <h1 class="hero-headline font-display font-size-display-xl">
@@ -60,25 +60,24 @@
   <section class="manufacturing-excellence" id="about">
     <div class="mfg-content wrap">
       
-      <div class="mfg-text-col">
-        <h2 class="mfg-headline font-display font-size-display-lg" appScrollReveal>
-          MANUFACTURING<br />
-          EXCELLENCE, DELIVERED<br />
-          END TO END
-        </h2>
-        
-        <p class="mfg-desc font-body font-size-body-md" appScrollReveal="100">
-          From concept to delivery, we manage every step with precision, ensuring quality, speed, innovation and responsible production.
-        </p>
-        <a routerLink="/capabilities" class="link-arrow font-body" appScrollReveal="180">
-          OUR CAPABILITIES
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
+      <h2 class="mfg-headline font-display font-size-display-lg" appScrollReveal>
+        MANUFACTURING EXCELLENCE, DELIVERED END TO END
+      </h2>
 
-      <div class="mfg-stats-col">
+      <div class="mfg-lower-row">
+        <div class="mfg-text-col">
+          <p class="mfg-desc font-body font-size-body-md" appScrollReveal="100">
+            From concept to delivery, we manage every step with precision, ensuring quality, speed, innovation and responsible production.
+          </p>
+          <a routerLink="/capabilities" class="link-arrow font-body" appScrollReveal="180">
+            OUR CAPABILITIES
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="mfg-stats-col">
         <div class="mfg-stat" appScrollReveal="80" scrollRevealVariant="scale">
           <i class="fa-solid fa-award" > </i>
           <span class="mfg-stat-value font-display">50+</span>
@@ -91,12 +90,13 @@
         </div>
         <div class="mfg-stat" appScrollReveal="240" scrollRevealVariant="scale">
           <i class="fa-solid fa-people-group"></i>
-          <span class="mfg-stat-value font-display">12,000+</span>
+          <span class="mfg-stat-value font-display">7,000+</span>
           <span class="mfg-stat-label font-body">PEOPLE<br/>EMPOWERED</span>
         </div>
         <div class="mfg-stat mfg-stat-text-only" appScrollReveal="320" scrollRevealVariant="scale">
           <i class="fa-solid fa-leaf"></i>
           <span class="mfg-stat-label font-body">COMMITTED TO<br/>SUSTAINABLE<br/>MANUFACTURING</span>
+        </div>
         </div>
       </div>
 
@@ -115,9 +115,7 @@
       <p class="services-eyebrow font-body font-size-body-lg">WHAT WE DO</p>
       
       <h2 class="services-heading font-display font-size-display-lg">
-        End-to-End<br />
-        Apparel Manufacturing<br />
-        Solutions
+        End-to-End Apparel Manufacturing Solutions
       </h2>
       <a routerLink="/capabilities" class="services-link font-body">
         LEARN MORE
@@ -303,102 +301,54 @@
     <div class="cg-right">
       <div class="cg-badge-grid">
 
-         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/smeta.png" alt="SMETA">
-          </div>
-          <span class="cg-badge-label font-body">SMETA 4 PILLAR CERTIFIED</span>
-          <span class="cg-badge-desc font-body">Ethical Trade & Responsible Supply Chain</span>
+        <div class="cg-badge-card">
+          <img src="assets/certificates/smeta.png" alt="SMETA">
         </div>
 
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/better-cotton.png" alt="Better Cotton Initiative">
-          </div>
-          <span class="cg-badge-label font-body">Better Cotton Initiative</span>
-          <span class="cg-badge-desc font-body">Supporting Sustainable Cotton Farming</span>
-        </div>
-
-       
-
-        <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/gots.png" alt="GOTS">
-          </div>
-          <span class="cg-badge-label font-body">GOTS</span>
-          <span class="cg-badge-desc font-body">Origanic Textiles for a better future</span>
+          <img src="assets/certificates/better-cotton.png" alt="Better Cotton Initiative">
         </div>
 
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/oeko.png" alt="BSCI">
-          </div>
-          <span class="cg-badge-label font-body">Oeko-tex certified</span>
-          <span class="cg-badge-desc font-body">tested for harmful substances & safe for use</span>
+          <img src="assets/certificates/gots.png" alt="GOTS">
         </div>
 
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/higg.png" alt="Higg Index">
-          </div>
-          <span class="cg-badge-label font-body">Higg Index</span>
-          <span class="cg-badge-desc font-body">Sustainability Metrics</span>
+          <img src="assets/certificates/oeko.png" alt="Oeko-tex">
         </div>
 
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/Flax.jpg" alt="European Flax">
-          </div>
-          <span class="cg-badge-label font-body">European flax certified</span>
-          <span class="cg-badge-desc font-body">traceabke premium flax from europe</span>
+          <img src="assets/certificates/higg.png" alt="Higg Index">
         </div>
 
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/sedex.png" alt="Sedex">
-          </div>
-          <span class="cg-badge-label font-body">Sedex member</span>
-          <span class="cg-badge-desc font-body">Driving responsible & sustainable business</span>
+          <img src="assets/certificates/Flax.jpg" alt="European Flax">
         </div>
 
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/SLCP.png" alt="slcp">
-          </div>
-          <span class="cg-badge-label font-body">slcp verified</span>
-          <span class="cg-badge-desc font-body">Promoting decent work worldwide</span>
+          <img src="assets/certificates/sedex.png" alt="Sedex">
         </div>
 
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/grs.png" alt="grs">
-          </div>
-          <span class="cg-badge-label font-body">grs certified</span>
-          <span class="cg-badge-desc font-body">verified recycled content & responsible production</span>
+          <img src="assets/certificates/SLCP.png" alt="SLCP">
         </div>
-        
+
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/ocs100.png" alt="ocs 100">
-          </div>
-          <span class="cg-badge-label font-body">ocs 100 certified</span>
-          <span class="cg-badge-desc font-body">ensuring organic content integrity</span>
+          <img src="assets/certificates/grs.png" alt="GRS">
         </div>
-        
+
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/r100.png" alt="rcs 100">
-          </div>
-          <span class="cg-badge-label font-body">rcs 100 certified</span>
-          <span class="cg-badge-desc font-body">verified recycled content in products</span>
+          <img src="assets/certificates/ocs100.png" alt="OCS 100">
         </div>
+
         <div class="cg-badge-card">
-          <div class="cg-badge-img">
-            <img src="assets/certificates/ocs100.png" alt="ocs">
-          </div>
-          <span class="cg-badge-label font-body">ocs blended certified</span>
-          <span class="cg-badge-desc font-body">blended organic content certified</span>
+          <img src="assets/certificates/r100.png" alt="RCS 100">
         </div>
+
+        <div class="cg-badge-card">
+          <img src="assets/certificates/ocs100.png" alt="OCS Blended">
+        </div>
+
       </div>
     </div>
 
