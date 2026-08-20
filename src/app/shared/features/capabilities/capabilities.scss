@@ -499,6 +499,13 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 160px 100px;
     min-height: 0;
+    // The base rule's aspect-ratio (6/4) was still in effect here, which
+    // locks this box to ~228px tall on a 342px-wide mobile column. But
+    // the explicit rows above need 160+6+100 = 266px. That mismatch let
+    // the bottom-row tiles spill out past the box, visually overlapping
+    // and hiding the product label sitting right below the gallery.
+    // Unsetting the ratio lets the box size to its actual content.
+    aspect-ratio: auto;
   }
 }
 
@@ -784,6 +791,17 @@
       color: var(--sky);
     }
   }
+
+  // This page sits on the light canvas (#f7f8f5), but the intro
+  // paragraph was inheriting body's default light text color
+  // (var(--white), meant for dark sections) with no override here —
+  // making it nearly invisible against the light background. The
+  // paragraph's reserved height stayed in the layout, which is what
+  // read as a big empty gap before the process steps.
+  p {
+    color: var(--bg);
+    opacity: 0.72;
+  }
 }
 
 // ── flow — ribbon-tab cards linked by connector arrows ──
@@ -792,12 +810,22 @@
 .cap-flow {
   position: relative;
 
-  // edge fade so the scroll affordance reads as intentional, not clipped
+  // edge fade so the scroll affordance reads as intentional, not clipped.
+  // The scrolling itself also lives here now (moved off .cap-flow__track
+  // — see note below) so the fade mask and the scroll container agree
+  // on which box is actually scrolling.
   @media (max-width: 1100px) {
     margin-inline: calc(-1 * var(--wrap-pad, 16px));
     padding-inline: var(--wrap-pad, 16px);
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--wrap-pad, 16px), #000 calc(100% - var(--wrap-pad, 16px)), transparent 100%);
     mask-image: linear-gradient(90deg, transparent 0, #000 var(--wrap-pad, 16px), #000 calc(100% - var(--wrap-pad, 16px)), transparent 100%);
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 
@@ -828,14 +856,16 @@
   }
 
   @media (max-width: 1100px) {
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
+    // Scrolling used to happen on this element, which meant its own box
+    // stayed at the *visible* viewport width while the 7 steps inside
+    // overflowed it. The dashed line (::before) is sized relative to
+    // this box, not the scrolled content — so it only ever spanned
+    // roughly the first 3 steps and appeared to "run out" while
+    // scrolling toward the last ones. Scrolling now happens on the
+    // parent (.cap-flow) instead, so this box is free to grow to fit
+    // all 7 steps, and the line spans the real full width with them.
+    width: max-content;
     padding-block: 3px 8px;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
 
     &::before {
       left: 20px;

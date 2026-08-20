@@ -1,0 +1,112 @@
+/* Terms of Use — imports shared legal styles */
+
+/* ─────────────────────────────────────────────
+   Legal page shared styles (Privacy Policy & Terms of Use)
+   ───────────────────────────────────────────── */
+
+// ── Hero band ──────────────────────────────────────────────────────────────
+.legal-hero {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  padding-block: 120px 80px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .eyebrow {
+    color: var(--sky);
+    font-size: clamp(0.8125rem, 0.25vw + 0.75rem, 0.9375rem);
+  }
+
+  h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    color: var(--white);
+    line-height: 0.95;
+
+    span {
+      color: var(--sky);
+    }
+  }
+}
+
+.legal-hero__meta {
+  font-size: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+// ── Body ────────────────────────────────────────────────────────────────────
+.legal-body {
+  padding-block: 80px 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.legal-section {
+  padding-block: 48px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 1.5vw + 0.9rem, 1.875rem);
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  p,
+  li {
+    font-size: clamp(1rem, 0.3vw + 0.925rem, 1.125rem);
+    color: rgba(244, 242, 234, 0.72);
+    line-height: 1.8;
+  }
+}
+
+// ── List ────────────────────────────────────────────────────────────────────
+.legal-list {
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: disc;
+
+  li::marker {
+    color: var(--sky);
+  }
+}
+
+// ── Inline link ─────────────────────────────────────────────────────────────
+.legal-link {
+  color: var(--sky);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.2s ease;
+
+  &:hover {
+    text-decoration-color: var(--sky);
+  }
+}
+
+// ── Responsive tweaks ────────────────────────────────────────────────────────
+@media (max-width: 768px) {
+  .legal-hero {
+    padding-block: 80px 56px;
+  }
+
+  .legal-body {
+    padding-block: 56px 80px;
+  }
+
+  .legal-section {
+    padding-block: 36px;
+  }
+}
