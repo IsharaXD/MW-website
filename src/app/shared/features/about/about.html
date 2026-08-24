@@ -8,18 +8,18 @@
      <img class="cap-hero__img" src="assets/7.jpg" alt="Maliban Wovens facility">
      <div class="cap-hero__overlay"></div>
 
-     <div class="cap-hero__rail wrap">
+     <!--      <div class="cap-hero__rail wrap">
           <div class="rail-stat"><strong class="font-display">50+</strong><span class="font-body">Years</span></div>
           <div class="rail-stat"><strong class="font-display">20+</strong><span class="font-body">Markets</span></div>
           <div class="rail-stat"><strong class="font-display">7K+</strong><span class="font-body">People</span></div>
      </div>
-
-     <div class="hero-content cap-hero__content">
+ -->
+     <div class="hero-content cap-hero__content" appReveal>
           <span class="eyebrow font-body">About Maliban Wovens</span>
           <h1 class="font-display">We don't just<br><span>manufacture.</span></h1>
           <p>Maliban Wovens has over 50 years of experience delivering high-quality, sustainable apparel manufacturing
                solutions for global brands.</p>
-         
+
      </div>
 </section>
 
@@ -32,7 +32,7 @@
 
      <div class="wrap">
 
-          <div class="story-layout">
+          <div class="story-layout" appReveal>
 
                <div class="story-img">
 
@@ -52,7 +52,7 @@
 
                     <div class="eyebrow">
 
-                         
+
 
                          OUR STORY
 
@@ -64,7 +64,7 @@
                     </h2>
 
                     <p class="story-text__lead">
-                          From a humble beginning to becoming a trusted
+                         From a humble beginning to becoming a trusted
                          global apparel manufacturing partner,
                          our journey has always been driven by
                          quality, innovation and people.
@@ -102,7 +102,7 @@
                                    <span>Modern manufacturing solutions.</span>
                               </div>
                          </div>
-                         
+
                          <div class="pillar">
                               <div class="pillar__icon"><i class="fa-solid fa-scissors"></i></div>
                               <div>
@@ -131,9 +131,9 @@
 
      <div class="wrap">
 
-          <div class="section__header section__header--center">
+          <div class="section__header section__header--center" appReveal>
                <div class="eyebrow">
-                    
+
                     OUR IMPACT
                </div>
                <h2>
@@ -142,21 +142,21 @@
           </div>
 
           <div class="stats-grid">
-               <div class="stat-card">
-                    <h3>50+</h3>
+               <div class="stat-card" appReveal [appRevealDelay]="0">
+                    <h3 class="stat-card__num">{{ statNums[0] }}</h3>
                     <p>Years of Excellence</p>
                </div>
-               <div class="stat-card">
-                    <h3>7,000+</h3>
-                    <p>Employees</p>
+               <div class="stat-card" appReveal [appRevealDelay]="100">
+                    <h3 class="stat-card__num">{{ statNums[1] }}</h3>
+                    <p>Countries Exported To</p>
                </div>
-               <div class="stat-card">
-                    <h3>Quality</h3>
-                    <p>Trusted & Reliable</p>
+               <div class="stat-card" appReveal [appRevealDelay]="200">
+                    <h3 class="stat-card__num">{{ statNums[2] }}</h3>
+                    <p>Repeat Client Rate</p>
                </div>
-               <div class="stat-card">
-                    <h3>500M+</h3>
-                    <p>Garments Produced</p>
+               <div class="stat-card" appReveal [appRevealDelay]="300">
+                    <h3 class="stat-card__num">{{ statNums[3] }}</h3>
+                    <p>Units Produced Annually</p>
                </div>
           </div>
 
@@ -196,77 +196,106 @@
                          reasonably tight, uncropped outline of the island, they should land
                          close to correct. Nudge the % values slightly if your image has
                          extra padding/whitespace around the coastline. -->
-                    <img class="lk-map-img" src="assets/lk.png" alt="Map of Sri Lanka showing Maliban Wovens factory locations">
+                    <img class="lk-map-img" src="assets/lk.png"
+                         alt="Map of Sri Lanka showing Maliban Wovens factory locations">
 
-                    <div class="lk-pin" data-factory="dehiattakandiya">
+                    <div class="lk-pin" data-factory="dehiattakandiya"
+                         [class.is-active]="activeFactory === 'dehiattakandiya'"
+                         (click)="setActiveFactory('dehiattakandiya')">
                          <span class="lk-pin__pulse"></span>
                          <span class="lk-pin__dot"></span>
                          <span class="lk-pin__label">Dehiattakandiya</span>
                     </div>
 
-                    <div class="lk-pin" data-factory="padiyathalawa">
-                         <span class="lk-pin__pulse"></span>
-                         <span class="lk-pin__dot"></span>
-                         <span class="lk-pin__label">Padiyathalawa</span>
-                    </div>
 
-                    <div class="lk-pin" data-factory="nalanda">
+                    <div class="lk-pin" data-factory="nalanda" [class.is-active]="activeFactory === 'nalanda'"
+                         (click)="setActiveFactory('nalanda')">
                          <span class="lk-pin__pulse"></span>
                          <span class="lk-pin__dot"></span>
                          <span class="lk-pin__label lk-pin__label--left">Nalanda</span>
                     </div>
 
-                    <div class="lk-pin" data-factory="balangoda">
+                    <div class="lk-pin" data-factory="balangoda" [class.is-active]="activeFactory === 'balangoda'"
+                         (click)="setActiveFactory('balangoda')">
                          <span class="lk-pin__pulse"></span>
                          <span class="lk-pin__dot"></span>
                          <span class="lk-pin__label">Balangoda</span>
                     </div>
 
-                    <div class="lk-pin" data-factory="pelmadulla">
+                    <div class="lk-pin" data-factory="pelmadulla" [class.is-active]="activeFactory === 'pelmadulla'"
+                         (click)="setActiveFactory('pelmadulla')">
                          <span class="lk-pin__pulse"></span>
                          <span class="lk-pin__dot"></span>
                          <span class="lk-pin__label lk-pin__label--left">Pelmadulla</span>
                     </div>
 
-                    <div class="lk-pin" data-factory="ingiriya">
+                    <div class="lk-pin" data-factory="ingiriya" [class.is-active]="activeFactory === 'ingiriya'"
+                         (click)="setActiveFactory('ingiriya')">
                          <span class="lk-pin__pulse"></span>
                          <span class="lk-pin__dot"></span>
                          <span class="lk-pin__label lk-pin__label--left">Ingiriya</span>
                     </div>
 
+                    <div class="lk-pin" data-factory="padiyathalawa"
+                         [class.is-active]="activeFactory === 'padiyathalawa'"
+                         (click)="setActiveFactory('padiyathalawa')">
+                         <span class="lk-pin__pulse"></span>
+                         <span class="lk-pin__dot"></span>
+                         <span class="lk-pin__label lk-pin__label--left">Padiyathalawa</span>
+                    </div>
                </div>
 
-               <!-- Factory / associates list -->
-               <div class="footprint-list">
+               <!-- Factory image gallery, synced with the map pins -->
+               <div class="fg">
 
-                    <div class="footprint-list__head">
-                         <span><i class="fa-solid fa-industry"></i> Factory</span>
-                         <span><i class="fa-solid fa-people-group"></i> Associates</span>
+                    <!-- Header: factory navigation + location name -->
+                    <div class="fg__header">
+                         <button type="button" class="fg__nav-btn" (click)="prevFactory()"
+                              aria-label="Previous location">
+                              <i class="fa-solid fa-chevron-left"></i>
+                         </button>
+                         <div class="fg__location">
+                              <i class="fa-solid fa-location-dot"></i>
+                              <span>{{ activeFactoryData.name }}</span>
+                         </div>
+                         <button type="button" class="fg__nav-btn" (click)="nextFactory()" aria-label="Next location">
+                              <i class="fa-solid fa-chevron-right"></i>
+                         </button>
                     </div>
 
-                    <div class="footprint-row">
-                         <span class="footprint-row__name"><i class="fa-solid fa-location-dot"></i> Ingiriya</span>
-                         <span class="footprint-row__count">1,195</span>
+                    <!-- Hero image with inner prev/next -->
+                    <div class="fg__hero">
+                         <img class="fg__hero-img" [src]="activeFactoryData.images[activeImageIndex]"
+                              [alt]="activeFactoryData.name + ' — image ' + (activeImageIndex + 1)">
+                         <button type="button" class="fg__img-arrow fg__img-arrow--prev" (click)="prevImage()"
+                              aria-label="Previous image">
+                              <i class="fa-solid fa-chevron-left"></i>
+                         </button>
+                         <button type="button" class="fg__img-arrow fg__img-arrow--next" (click)="nextImage()"
+                              aria-label="Next image">
+                              <i class="fa-solid fa-chevron-right"></i>
+                         </button>
+                         <div class="fg__hero-counter">
+                              {{ activeImageIndex + 1 }} / {{ activeFactoryData.images.length }}
+                         </div>
                     </div>
-                    <div class="footprint-row">
-                         <span class="footprint-row__name"><i class="fa-solid fa-location-dot"></i> Balangoda</span>
-                         <span class="footprint-row__count">1,442</span>
+
+                    <!-- Thumbnail strip -->
+                    <div class="fg__thumbs">
+                         <button type="button" class="fg__thumb"
+                              *ngFor="let img of activeFactoryData.images; let i = index"
+                              [class.is-active]="activeImageIndex === i" (click)="setActiveImage(i)"
+                              [attr.aria-label]="activeFactoryData.name + ' image ' + (i + 1)">
+                              <img [src]="img" [alt]="activeFactoryData.name + ' thumbnail ' + (i + 1)">
+                         </button>
                     </div>
-                    <div class="footprint-row">
-                         <span class="footprint-row__name"><i class="fa-solid fa-location-dot"></i> Nalanda</span>
-                         <span class="footprint-row__count">820</span>
-                    </div>
-                    <div class="footprint-row">
-                         <span class="footprint-row__name"><i class="fa-solid fa-location-dot"></i> Pelmadulla</span>
-                         <span class="footprint-row__count">760</span>
-                    </div>
-                    <div class="footprint-row">
-                         <span class="footprint-row__name"><i class="fa-solid fa-location-dot"></i> Dehiattakandiya</span>
-                         <span class="footprint-row__count">1,799</span>
-                    </div>
-                    <div class="footprint-row">
-                         <span class="footprint-row__name"><i class="fa-solid fa-location-dot"></i> Padiyathalawa</span>
-                         <span class="footprint-row__count">72</span>
+
+                    <!-- Location dots -->
+                    <div class="fg__dots">
+                         <button type="button" class="fg__dot" *ngFor="let f of factories"
+                              [class.is-active]="activeFactory === f.key" (click)="setActiveFactory(f.key)"
+                              [attr.aria-label]="f.name">
+                         </button>
                     </div>
 
                </div>
@@ -296,7 +325,7 @@
 
           <div class="vmv-grid">
 
-               <div class="vmv-card vmv-card--mission">
+               <div class="vmv-card vmv-card--mission" appReveal>
 
                     <img class="vmv-card__bg" src="assets/mission.png" alt="">
 
@@ -317,7 +346,7 @@
 
                </div>
 
-               <div class="vmv-card vmv-card--vision">
+               <div class="vmv-card vmv-card--vision" appReveal>
 
                     <img class="vmv-card__bg" src="assets/vission.png" alt="">
 
@@ -337,7 +366,7 @@
 
                </div>
 
-               <div class="vmv-card vmv-card--values">
+               <div class="vmv-card vmv-card--values" appReveal>
 
                     <img class="vmv-card__bg" src="assets/f.jpg" alt="">
 
@@ -382,7 +411,7 @@
                <p>Decades of excellence in textile manufacturing.</p>
           </div>
 
-          <div class="journey-nav" data-reveal>
+          <div class="journey-nav" appReveal>
                <button type="button" [class.active]="activeMilestone === 0" (click)="setMilestone(0)">1974</button>
                <button type="button" [class.active]="activeMilestone === 1" (click)="setMilestone(1)">1979</button>
                <button type="button" [class.active]="activeMilestone === 2" (click)="setMilestone(2)">1981</button>
@@ -399,7 +428,9 @@
                     <div class="journey-card__content">
                          <span class="journey-card__year">1974</span>
                          <h3>Foundation at Almoor Street</h3>
-                         <p>A small factory was established in Rathnam Building, Almoor Street, Colombo with about 35 machines and workers, where the famous <strong>"Maliban"</strong> brand shirts were produced.</p>
+                         <p>A small factory was established in Rathnam Building, Almoor Street, Colombo with about 35
+                              machines and workers, where the famous <strong>"Maliban"</strong> brand shirts were
+                              produced.</p>
                     </div>
                </div>
 
@@ -410,7 +441,8 @@
                     <div class="journey-card__content">
                          <span class="journey-card__year">1979</span>
                          <h3>New Colombo 10 Facility</h3>
-                         <p>A new facility was established in Colombo 10, expanding operations with 100 Juki machines and 500 employees across sewing, cutting and finishing departments.</p>
+                         <p>A new facility was established in Colombo 10, expanding operations with 100 Juki machines
+                              and 500 employees across sewing, cutting and finishing departments.</p>
                     </div>
                </div>
 
@@ -421,7 +453,9 @@
                     <div class="journey-card__content">
                          <span class="journey-card__year">1981</span>
                          <h3>Began Garment Exports</h3>
-                         <p>The company began exporting garments through an agency, later setting up its own shipping department under the Maliban name. Its first brand exported was <strong>"MAST."</strong></p>
+                         <p>The company began exporting garments through an agency, later setting up its own shipping
+                              department under the Maliban name. Its first brand exported was <strong>"MAST."</strong>
+                         </p>
                     </div>
                </div>
 
@@ -432,7 +466,8 @@
                     <div class="journey-card__content">
                          <span class="journey-card__year">1986</span>
                          <h3>Four-Story Expansion</h3>
-                         <p>By 1986, EAM Maliban established its main branch in a four-story building at Sri Dhamma Mawatha, Colombo 10, with state-of-the-art facilities and over 1,200 employees.</p>
+                         <p>By 1986, EAM Maliban established its main branch in a four-story building at Sri Dhamma
+                              Mawatha, Colombo 10, with state-of-the-art facilities and over 1,200 employees.</p>
                     </div>
                </div>
 
@@ -443,7 +478,9 @@
                     <div class="journey-card__content">
                          <span class="journey-card__year">1994</span>
                          <h3>EAM Maliban Textile (Pvt) Ltd</h3>
-                         <p>In 1994, under the leadership of Chairman Mr. Eliyas Abdul Kareem, the company was restructured and commenced operations as <strong>EAM Maliban Textile (Pvt) Ltd</strong>.</p>
+                         <p>In 1994, under the leadership of Chairman Mr. Eliyas Abdul Kareem, the company was
+                              restructured and commenced operations as <strong>EAM Maliban Textile (Pvt) Ltd</strong>.
+                         </p>
                     </div>
                </div>
 
@@ -454,7 +491,9 @@
                     <div class="journey-card__content">
                          <span class="journey-card__year">2024</span>
                          <h3>Renamed to Maliban Wovens</h3>
-                         <p>In 2024, the name <strong>EAM Maliban Textile (Pvt) Ltd</strong> was changed to <strong>Maliban Wovens (Pvt) Ltd</strong>. In textile excellence and global reach, in every stitch. Future-forward mindset.</p>
+                         <p>In 2024, the name <strong>EAM Maliban Textile (Pvt) Ltd</strong> was changed to
+                              <strong>Maliban Wovens (Pvt) Ltd</strong>. In textile excellence and global reach, in
+                              every stitch. Future-forward mindset.</p>
                     </div>
                </div>
           </div>
@@ -479,7 +518,7 @@
 
           </div>
 
-          <div class="lead-track">
+          <div class="lead-track" appReveal>
 
                <div class="lead-card">
 
@@ -621,7 +660,7 @@
 
           </div>
 
-          <div class="gallery-bento">
+          <div class="gallery-bento" appReveal>
 
                <div class="g-cell g-cell--feature">
 

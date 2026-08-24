@@ -39,15 +39,6 @@
       </div>
     </div>
 
-    <!-- Stat strip pinned to the bottom -->
-    <div class="hero-stats wrap">
-      @for (stat of stats; track stat.label) {
-        <div class="stat">
-          <span class="stat-value font-display">{{ stat.value }}</span>
-          <span class="stat-label font-body">{{ stat.label }}</span>
-        </div>
-      }
-    </div>
 
     <!-- Scroll indicator -->
     <div class="scroll-hint" aria-hidden="true">
@@ -87,11 +78,6 @@
           <i class="fa-solid fa-globe"></i>
           <span class="mfg-stat-value font-display">20+</span>
           <span class="mfg-stat-label font-body">GLOBAL<br/>MARKETS</span>
-        </div>
-        <div class="mfg-stat" appScrollReveal="240" scrollRevealVariant="scale">
-          <i class="fa-solid fa-people-group"></i>
-          <span class="mfg-stat-value font-display">7,000+</span>
-          <span class="mfg-stat-label font-body">PEOPLE<br/>EMPOWERED</span>
         </div>
         <div class="mfg-stat mfg-stat-text-only" appScrollReveal="320" scrollRevealVariant="scale">
           <i class="fa-solid fa-leaf"></i>

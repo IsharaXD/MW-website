@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { Footer } from '../../components/footer/footer';
 import { Nav } from '../../components/nav/nav';
 import emailjs from '@emailjs/browser';
+import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-contact',
-  imports: [Footer, Nav
+  standalone: true,
+  imports: [Footer, Nav, RevealDirective
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',

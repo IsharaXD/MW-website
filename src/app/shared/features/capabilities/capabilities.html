@@ -10,13 +10,13 @@
     <img class="cap-hero__img" src="assets/cp.png" alt="Maliban Wovens manufacturing floor">
     <div class="cap-hero__overlay"></div>
 
-    <div class="cap-hero__rail wrap">
+    <!--    <div class="cap-hero__rail wrap">
       <div class="rail-stat"><strong class="font-display">6+</strong><span class="font-body">Factories</span></div>
       <div class="rail-stat"><strong class="font-display">7K+</strong><span class="font-body">Employees</span></div>
       <div class="rail-stat"><strong class="font-display">50+</strong><span class="font-body">Years</span></div>
-    </div>
+    </div> -->
 
-    <div class="hero-content cap-hero__content">
+    <div class="hero-content cap-hero__content" appReveal>
       <span class="eyebrow font-body">Our Capabilities</span>
       <h1 class="font-display">Manufacturing,<br><span>without limits.</span></h1>
 
@@ -29,109 +29,255 @@
   ═══════════════════════════════════════ -->
   <section class="cap-rows">
 
-    <div class="cap-row wrap">
+    <div class="cap-row wrap" appReveal>
       <div class="cap-row__img"><img src="assets/man.jpg" alt="Woven apparel"></div>
       <div class="cap-row__text">
         <span class="row-index font-display">01</span>
         <h2 class="font-display">Woven <span>Apparel.</span></h2>
-        <p class="font-body">900K tops and 900K bottoms produced every month, plus 300K knit cut &amp; sew pieces,
-          precision manufacturing at scale.</p>
+        <p class="font-body">Delivering high-volume woven garments and knit cut-and-sew collections. Our production lines operate under strict global quality control standards, ensuring absolute consistency and precision for top-tier fashion brands.</p>
       </div>
     </div>
 
-    <div class="cap-row cap-row--reverse wrap">
+    <div class="cap-row cap-row--reverse wrap" appReveal>
       <div class="cap-row__img"><img src="assets/so.jpg" alt="Integrated manufacturing"></div>
       <div class="cap-row__text">
         <span class="row-index font-display">02</span>
         <h2 class="font-display">Integrated <span>Manufacturing.</span></h2>
-        <p class="font-body">From 3D design and sourcing to embroidery, printing, washing, finishing and testing, an integrated manufacturing ecosystem built for end-to-end production.</p>
+        <p class="font-body">A fully vertical ecosystem offering true end-to-end production. From raw material sourcing and virtual prototyping, to in-house embroidery, advanced wash techniques, and accredited physical testing; we eliminate supply chain friction.</p>
       </div>
     </div>
 
-    <div class="cap-row wrap">
+    <div class="cap-row wrap" appReveal>
       <div class="cap-row__img"><img src="assets/tech.png" alt="Smart manufacturing"></div>
       <div class="cap-row__text">
         <span class="row-index font-display">03</span>
         <h2 class="font-display">Smart <span>Manufacturing.</span></h2>
-        <p class="font-body">Powered by the latest digital technologies and industry-leading solutions, enabling connected design, integrated planning, and intelligent production across the manufacturing floor.</p>
+        <p class="font-body">Driven by data and digital integration. We utilize industry-leading automated technologies and real-time shop-floor tracking to guarantee maximum efficiency, reduced lead times, and transparent production cycles.</p>
       </div>
     </div>
 
-    <div class="cap-row cap-row--reverse wrap">
+    <div class="cap-row cap-row--reverse wrap" appReveal>
       <div class="cap-row__img"><img src="assets/53.jpg" alt="Sustainable manufacturing"></div>
       <div class="cap-row__text">
         <span class="row-index font-display">04</span>
         <h2 class="font-display">Sustainable <span>Manufacturing.</span></h2>
-        <p class="font-body">30% organic cotton and 50% BCI cotton, supported by 100% ZDHC RSL Level 1 or above conformance for process chemicals.</p>
+        <p class="font-body">Committed to measurable environmental impact. Our fabric sourcing prioritizes globally recognized sustainable materials and strict responsible chemical management. We actively optimize resource consumption and uphold ethical working conditions across all facilities.</p>
       </div>
     </div>
-
 
   </section>
 
 
-<!-- ═══════════════════════════════════════
-     WHAT WE MAKE — mini gallery grid per category
+  <!-- ═══════════════════════════════════════
+     WHAT WE MAKE — category showcase, media left / types right
 ═══════════════════════════════════════ -->
-<section class="cap-showcase" id="make">
-  <div class="wrap cap-showcase__head">
-    <span class="section-label font-body">Our Products</span>
-  </div>
+  <section class="cap-showcase" id="make">
+    <div class="wrap cap-showcase__head">
+      <span class="section-label font-body">Our Products</span>
+    </div>
 
-  <div class="cap-showcase__grid wrap">
+    <!-- ── Category 01 — Woven Bottoms ───────────────────────── -->
+    <div class="pin-showcase" appPinnedShowcase>
+      <div class="pin-showcase__inner wrap">
 
-    <article class="showcase-group">
-      <span class="showcase-group__num font-display">01</span>
+        <div class="pin-showcase__media">
+          <div class="showcase-row__header">
+            <span class="showcase-row__num font-display">01</span>
+            <h3 class="showcase-row__title font-display">Woven Bottoms</h3>
+          </div>
+          <div class="showcase-row__gallery">
+            <div class="showcase-tile showcase-tile--main">
+              <img src="assets/29.png" alt="Woven bottoms">
+            </div>
+            <div class="showcase-tile">
+              <img src="assets/22.png" alt="Woven bottoms detail">
+            </div>
+            <div class="showcase-tile">
+              <img src="assets/33.png" alt="Woven bottoms fabric close-up">
+            </div>
+          </div>
+        </div>
 
-      <div class="showcase-group__gallery">
-        <div class="showcase-tile showcase-tile--main">
-          <img src="assets/29.png" alt="Woven bottoms">
+        <div class="pin-showcase__side">
+          <span class="types-caption font-body">Scroll to explore</span>
+
+          <div class="pin-showcase__stage">
+            <div class="pin-showcase__track">
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/cargo.png" alt="Cargo Pants"></div>
+                <span class="pin-item__label font-body">Cargo Pants</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/trousers.png" alt="Formal Trousers"></div>
+                <span class="pin-item__label font-body">Formal Trousers</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/semif.png" alt="Semi-Formal Pants"></div>
+                <span class="pin-item__label font-body">Semi-Formal</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/skirt.png" alt="Skirts"></div>
+                <span class="pin-item__label font-body">Skirts</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/shorts.png" alt="Shorts"></div>
+                <span class="pin-item__label font-body">Shorts</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/chino.png" alt="Chinos"></div>
+                <span class="pin-item__label font-body">Chinos</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/casualw.png" alt="Casual Wear"></div>
+                <span class="pin-item__label font-body">Casual Wear</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/joggers.png" alt="Joggers"></div>
+                <span class="pin-item__label font-body">Joggers</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile fallback: scroll-jacking is disabled under 860px,
+               this static grid takes over instead (see directive + scss). -->
+          <div class="types-grid types-grid--8 types-grid--mobile-fallback">
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/pants/cargo.jpg" alt="Cargo Pants"></div>
+              <span class="type-card__label font-body">Cargo Pants</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/pants/formal-trousers.jpg" alt="Formal Trousers"></div>
+              <span class="type-card__label font-body">Formal Trousers</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/pants/semi-formal.jpg" alt="Semi-Formal Pants"></div>
+              <span class="type-card__label font-body">Semi-Formal</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/pants/skirts.jpg" alt="Skirts"></div>
+              <span class="type-card__label font-body">Skirts</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/pants/shorts.jpg" alt="Shorts"></div>
+              <span class="type-card__label font-body">Shorts</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/pants/chinos.jpg" alt="Chinos"></div>
+              <span class="type-card__label font-body">Chinos</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/pants/casual-wear.jpg" alt="Casual Wear"></div>
+              <span class="type-card__label font-body">Casual Wear</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/pants/joggers.jpg" alt="Joggers"></div>
+              <span class="type-card__label font-body">Joggers</span>
+            </div>
+          </div>
         </div>
-        <div class="showcase-tile">
-          <img src="assets/22.png" alt="Woven bottoms detail">
-        </div>
-        <div class="showcase-tile">
-          <img src="assets/33.png" alt="Woven bottoms fabric close-up">
-        </div>
+
       </div>
+    </div>
 
-      <span class="showcase-group__label font-body">Woven Bottoms</span>
-    </article>
+    <!-- ── Category 02 — Suiting & Outer Wear ────────────────── -->
+    <div class="pin-showcase pin-showcase--reverse" appPinnedShowcase>
+      <div class="pin-showcase__inner wrap">
 
-    <article class="showcase-group">
-      <span class="showcase-group__num font-display">02</span>
+        <div class="pin-showcase__side">
+          <span class="types-caption font-body">Scroll to explore</span>
 
-      <div class="showcase-group__gallery">
-        <div class="showcase-tile showcase-tile--main">
-          <img src="assets/4.png" alt="Tailored garments">
+          <div class="pin-showcase__stage">
+            <div class="pin-showcase__track">
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/bl.png" alt="Blazers"></div>
+                <span class="pin-item__label font-body">Blazers</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/suit.png" alt="Suiting"></div>
+                <span class="pin-item__label font-body">Suiting</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/mt.png" alt="Men's Tailored"></div>
+                <span class="pin-item__label font-body">Men's Tailored</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/wt.png" alt="Women's Tailored"></div>
+                <span class="pin-item__label font-body">Women's Tailored</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/jk.png" alt="Sport Jackets"></div>
+                <span class="pin-item__label font-body">Sport Jackets</span>
+              </div>
+              <div class="pin-item">
+                <div class="pin-item__img"><img src="assets/fs.png" alt="Formal Suits"></div>
+                <span class="pin-item__label font-body">Formal Suits</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="types-grid types-grid--6 types-grid--mobile-fallback">
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/jackets/blazers.jpg" alt="Blazers"></div>
+              <span class="type-card__label font-body">Blazers</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/jackets/suiting.jpg" alt="Suiting"></div>
+              <span class="type-card__label font-body">Suiting</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/jackets/mens-tailored.jpg" alt="Men's Tailored"></div>
+              <span class="type-card__label font-body">Men's Tailored</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/jackets/womens-tailored.jpg" alt="Women's Tailored"></div>
+              <span class="type-card__label font-body">Women's Tailored</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/jackets/sport-jackets.jpg" alt="Sport Jackets"></div>
+              <span class="type-card__label font-body">Sport Jackets</span>
+            </div>
+            <div class="type-card">
+              <div class="type-card__img"><img src="assets/jackets/formal-suits.jpg" alt="Formal Suits"></div>
+              <span class="type-card__label font-body">Formal Suits</span>
+            </div>
+          </div>
         </div>
-        <div class="showcase-tile">
-          <img src="assets/2.png" alt="Suiting detail">
+
+        <div class="pin-showcase__media">
+          <div class="showcase-row__header">
+            <span class="showcase-row__num font-display">02</span>
+            <h3 class="showcase-row__title font-display">Suiting & Outer Wear</h3>
+          </div>
+          <div class="showcase-row__gallery">
+            <div class="showcase-tile showcase-tile--main">
+              <img src="assets/4.png" alt="Tailored garments">
+            </div>
+            <div class="showcase-tile">
+              <img src="assets/2.png" alt="Suiting detail">
+            </div>
+            <div class="showcase-tile">
+              <img src="assets/5.png" alt="Outer wear fabric close-up">
+            </div>
+          </div>
         </div>
-        <div class="showcase-tile">
-          <img src="assets/5.png" alt="Outer wear fabric close-up">
-        </div>
+
       </div>
-
-      <span class="showcase-group__label font-body">SUITING & OUTER WEAR</span>
-    </article>
-
-  </div>
-</section>
+    </div>
+  </section>
 
 
   <section class="innovation-timeline">
 
     <div class="wrap">
 
-      <div class="innovation-header">
+      <div class="innovation-header" appReveal>
         <span class="section-label font-body">Innovation</span>
         <h2 class="font-display">
           Driving the future of <span>apparel manufacturing.</span>
         </h2>
         <p class="font-body innovation-intro">
           We continuously invest in state-of-the-art machinery and digital integration, pushing the limits of modern
-          apparel production to deliver precision, efficiency, and quality for global brands.
+          apparel production. By bridging the gap between traditional craftsmanship and modern technology, we deliver unparalleled precision and scalable efficiency for global brands.
         </p>
       </div>
 
@@ -140,7 +286,7 @@
         <div class="timeline-line"></div>
 
         <!-- 01 -->
-        <article class="timeline-card">
+        <article class="timeline-card" appReveal>
 
           <div class="timeline-dot"></div>
 
@@ -153,12 +299,11 @@
           <h3 class="font-display">Intelligent Automation</h3>
 
           <p class="font-body">
-            We integrate advanced automation across our production lines to streamline workflows and ensure consistent
-            high quality.</p>
+            Integrating advanced automated material handling across our production lines to eliminate human error, streamline workflows, and ensure absolute consistency at high volumes.</p>
         </article>
 
         <!-- 02 -->
-        <article class="timeline-card">
+        <article class="timeline-card" appReveal>
 
           <div class="timeline-dot"></div>
 
@@ -171,14 +316,13 @@
           <h3 class="font-display">Innovation & R&D</h3>
 
           <p class="font-body">
-            Our R&D teams collaborate with leading designers and technologists to explore new materials and digital
-            design methods.
+            Our dedicated R&D facilities collaborate with leading textile technologists to pioneer advanced materials, technical finishes, and virtual prototyping, accelerating speed-to-market.
           </p>
 
         </article>
 
         <!-- 03 -->
-        <article class="timeline-card">
+        <article class="timeline-card" appReveal>
 
           <div class="timeline-dot"></div>
 
@@ -191,14 +335,13 @@
           <h3 class="font-display">Sustainable Practices</h3>
 
           <p class="font-body">
-            From energy conservation to waste reduction, we implement responsible manufacturing processes at every
-            stage.
+            Engineering a greener supply chain. We rigorously audit and optimize our energy consumption, wastewater management, and material upcycling to meet stringent global compliance standards.
           </p>
 
         </article>
 
         <!-- 04 -->
-        <article class="timeline-card">
+        <article class="timeline-card" appReveal>
 
           <div class="timeline-dot"></div>
 
@@ -209,12 +352,11 @@
           <span class="timeline-number font-display">04</span>
 
           <h3 class="font-display">
-            Customer Focused
+            Strategic Partnerships
           </h3>
 
           <p class="font-body">
-            We tailor our manufacturing and technology integrations to align perfectly with the evolving needs of our
-            global partners.
+            We build integrated supply chain solutions. Our technology and capacity planning are strictly aligned to support the dynamic inventory needs of our global partners.
           </p>
 
         </article>
@@ -315,28 +457,28 @@
   <!-- ═══════════════════════════════════════
        PROCESS VIDEO — full-bleed player, see manufacturing in motion
   ═══════════════════════════════════════ -->
-<section class="cap-video">
-  <div class="wrap cap-video__head">
-    <span class="section-label font-body">See It In Motion</span>
-    <h2 class="font-display">Inside the <span>manufacturing floor.</span></h2>
-    <p class="font-body">A walkthrough of our production line, from cutting to finishing.</p>
-  </div>
-
-  <div class="cap-video__stage">
-    <div class="cap-video__card">
-      <video #capVideo class="cap-video__el" id="capProcessVideo" poster="assets/video-poster.jpg" preload="metadata"
-        autoplay muted loop playsinline>
-        <source src="https://res.cloudinary.com/gbyojmiz/video/upload/v1786680915/mw_w5wau7.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-      <button type="button" class="cap-video__fullscreen" (click)="capVideo.requestFullscreen()"
-        aria-label="View video fullscreen">
-        <i class="fa-solid fa-expand"></i>
-      </button>
+  <section class="cap-video">
+    <div class="wrap cap-video__head">
+      <span class="section-label font-body">See It In Motion</span>
+      <h2 class="font-display">Inside the <span>manufacturing floor.</span></h2>
+      <p class="font-body">A walkthrough of our production line, from cutting to finishing.</p>
     </div>
-  </div>
-</section>
+
+    <div class="cap-video__stage">
+      <div class="cap-video__card">
+        <video #capVideo class="cap-video__el" id="capProcessVideo" poster="assets/video-poster.jpg" preload="metadata"
+          autoplay muted loop playsinline>
+          <source src="https://res.cloudinary.com/gbyojmiz/video/upload/v1786680915/mw_w5wau7.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <button type="button" class="cap-video__fullscreen" (click)="capVideo.requestFullscreen()"
+          aria-label="View video fullscreen">
+          <i class="fa-solid fa-expand"></i>
+        </button>
+      </div>
+    </div>
+  </section>
 
 
   <!-- ═══════════════════════════════════════
@@ -384,7 +526,9 @@
 
 
   <!-- ═══════════════════════════════════════
-       CTA — ghost monogram behind the headline, echoes the hero
+       CTA — ghost monogram behind the headline, echoes the hero.
+       Carries both asks: request a presentation, or download the
+       company profile PDF to share internally.
   ═══════════════════════════════════════ -->
   <section class="cap-cta">
     <img class="cap-cta__img" src="assets/par.jpg" alt="Maliban Wovens production">
@@ -392,7 +536,15 @@
     <span class="cap-cta__ghost font-display" aria-hidden="true">MW</span>
     <div class="cap-cta__content wrap">
       <h2 class="font-display">Looking for a manufacturing <span>partner?</span></h2>
-      <a href="/contact" class="btn-primary font-body">Request a Presentation →</a>
+      <p class="font-body cap-cta__sub">Get the full picture, download our company profile, or request a
+        live presentation with our team.</p>
+      <div class="cap-cta__actions">
+        <a href="/contact" class="btn-primary font-body">Request a Presentation →</a>
+        <a class="btn-ghost font-body" href="assets/docs/maliban-wovens-company-profile.pdf" download
+          target="_blank" rel="noopener" aria-label="Download the Maliban Wovens company profile PDF">
+          <i class="fa-solid fa-file-pdf"></i> Download Company Profile
+        </a>
+      </div>
     </div>
   </section>
 

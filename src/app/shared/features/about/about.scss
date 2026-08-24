@@ -135,57 +135,6 @@ p {
 }
 
 
-// ── Reveal on load ────────────────────────────────────────
-// Content is visible by default, full stop — it never depends on a
-// .js-ready / .revealed class being added by component TS. If you later
-// wire up an IntersectionObserver in about.component.ts to add
-// .revealed on scroll, the transition below will animate it; if that
-// JS never runs, content still just sits there fully visible.
-[data-reveal] {
-  opacity: 1;
-  transform: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  [data-reveal] {
-    animation: fadeUp 0.7s ease both;
-  }
-
-  // stagger via the data-reveal-delay attribute (set inline by Angular
-  // template binding, e.g. [style.animation-delay.ms]="delay") —
-  // safe default of 0 if not set
-  [data-reveal][data-reveal-delay="80"] {
-    animation-delay: .08s;
-  }
-
-  [data-reveal][data-reveal-delay="100"] {
-    animation-delay: .1s;
-  }
-
-  [data-reveal][data-reveal-delay="150"] {
-    animation-delay: .15s;
-  }
-
-  [data-reveal][data-reveal-delay="160"] {
-    animation-delay: .16s;
-  }
-
-  [data-reveal][data-reveal-delay="200"] {
-    animation-delay: .2s;
-  }
-
-  [data-reveal][data-reveal-delay="240"] {
-    animation-delay: .24s;
-  }
-
-  [data-reveal][data-reveal-delay="320"] {
-    animation-delay: .32s;
-  }
-
-  [data-reveal][data-reveal-delay="400"] {
-    animation-delay: .4s;
-  }
-}
 
 // ── Eyebrow ────────────────────────────────────────────────
 .eyebrow {
@@ -320,6 +269,7 @@ p {
   display: flex;
   align-items: flex-end;
   padding: 100px 7% 60px;
+  border-radius: 0 0 35px 35px;
 
   @media (max-width: 900px) {
     padding: 90px 5% 60px;
@@ -399,7 +349,7 @@ p {
   }
 }
 
-.rail-stat {
+/* .rail-stat {
   text-align: right;
   padding-right: 18px;
   border-right: 1px solid var(--border);
@@ -430,7 +380,7 @@ p {
       border-right: none;
     }
   }
-}
+} */
 
 .hero-content,
 .cap-hero__content {
@@ -576,7 +526,7 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: clamp(0.9375rem, 0.3vw + 0.875rem, 1.0625rem);
-  max-width: 12ch;
+  max-width: 21ch;
 }
 
 @media (max-width: 1024px) {
@@ -850,7 +800,8 @@ p {
     }
   }
 
-  &:hover {
+  &:hover,
+  &.is-active {
     z-index: 2;
 
     .lk-pin__dot {
@@ -861,6 +812,23 @@ p {
     .lk-pin__label {
       opacity: 1;
       transform: translate(0, -50%);
+    }
+  }
+
+  &.is-active {
+    .lk-pin__pulse {
+      background: var(--rust);
+      opacity: 0.28;
+    }
+
+    .lk-pin__dot {
+      background: var(--rust);
+      transform: scale(1.5);
+    }
+
+    .lk-pin__label {
+      color: var(--white);
+      background: var(--rust);
     }
   }
 
@@ -901,79 +869,217 @@ p {
   left: 62.4%;
   top: 55.8%;
 }
-
 .lk-pin[data-factory="padiyathalawa"] {
   left: 71.3%;
   top: 60.8%;
 }
 
-// ── Factory / associates list ───────────────────────────────
-.footprint-list {
+
+
+// ── Factory image gallery (fg = footprint gallery) ──────────
+// Synced with the map pins. Clicking a pin, an arrow, or a dot
+// all drive `activeFactory`; clicking a thumbnail drives `activeImageIndex`.
+.fg {
   background: var(--white);
   border-radius: var(--r-card);
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: var(--shadow-card);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.footprint-list__head {
+// ── Header: location name + factory prev/next arrows ─────────
+.fg__header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
   background: var(--navy);
-
-  span {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 18px 24px;
-    color: var(--white);
-    font-size: clamp(0.9375rem, 0.3vw + 0.875rem, 1.0625rem);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-
-    i {
-      color: var(--sky);
-      font-size: 15px;
-    }
-  }
+  padding: 14px 16px;
 }
 
-.footprint-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 16px 24px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  transition: background var(--transition);
-
-  &:last-child {
-    border-bottom: none;
-  }
+.fg__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
 
   &:hover {
-    background: rgba(91, 149, 204, 0.06);
-  }
-
-  .footprint-row__name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: clamp(0.9375rem, 0.3vw + 0.875rem, 1.0625rem);
-    font-weight: 500;
-    color: var(--navy);
-
-    i {
-      color: var(--rust);
-      font-size: 13px;
-    }
-  }
-
-  .footprint-row__count {
-    font-family: var(--disp);
-    font-size: clamp(1.0625rem, 0.3vw + 1rem, 1.1875rem);
-    color: var(--navy-mid);
+    background: var(--sky);
+    transform: scale(1.06);
   }
 }
+
+.fg__location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--white);
+  font-size: clamp(1rem, 0.3vw + 0.9375rem, 1.125rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+
+  i {
+    color: var(--sky);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+}
+
+// ── Hero image ────────────────────────────────────────────────
+.fg__hero {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.fg__hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+
+// Overlaid prev/next arrows on the hero image
+.fg__img-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(19, 43, 68, 0.55);
+  backdrop-filter: blur(6px);
+  color: var(--white);
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition), background var(--transition), transform var(--transition);
+  z-index: 2;
+
+  &--prev { left: 12px; }
+  &--next { right: 12px; }
+
+  &:hover {
+    background: var(--sky);
+    transform: translateY(-50%) scale(1.08);
+  }
+}
+
+.fg__hero:hover .fg__img-arrow {
+  opacity: 1;
+}
+
+// Image counter badge (e.g. "2 / 4")
+.fg__hero-counter {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  background: rgba(19, 43, 68, 0.6);
+  backdrop-filter: blur(6px);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+// ── Thumbnail strip ───────────────────────────────────────────
+.fg__thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 3px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.fg__thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 3px solid transparent;
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color var(--transition), transform var(--transition);
+  background: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    opacity: 0.72;
+  }
+
+  &:hover img {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+
+  &.is-active {
+    border-color: var(--rust);
+    transform: scale(1.03);
+
+    img {
+      opacity: 1;
+    }
+  }
+}
+
+// ── Location dots ─────────────────────────────────────────────
+.fg__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+}
+
+.fg__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+
+  &:hover {
+    background: var(--sky);
+  }
+
+  &.is-active {
+    background: var(--rust);
+    transform: scale(1.3);
+  }
+}
+
 // Three-up card grid on desktop/tablet. Below 720px the cards are tall
 // enough (min-height 190px + padded text) that squeezing 3 across makes
 // them illegibly narrow, so it drops to one card per row instead.

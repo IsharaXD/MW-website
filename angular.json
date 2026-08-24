@@ -66,7 +66,10 @@
           "builder": "@angular/build:dev-server",
           "options": {
             "host": "0.0.0.0",
-            "allowedHosts": ["192.168.30.56", "localhost"]
+            "allowedHosts": [
+              "192.168.30.60",
+              "localhost"
+            ]
           },
           "configurations": {
             "production": {

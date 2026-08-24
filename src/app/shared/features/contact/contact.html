@@ -12,7 +12,7 @@
 
    
 
-    <div class="hero-content cap-hero__content">
+    <div class="hero-content cap-hero__content" appReveal>
       <span class="eyebrow font-body">Contact Us</span>
       <h1 class="font-display">Let's start a<br><span>conversation.</span></h1>
       <a href="#form" class="btn-primary font-body">Send a Message →</a>
@@ -26,7 +26,7 @@
   <section class="contact-main" id="form">
     <div class="wrap contact-main__grid">
 
-      <div class="contact-info">
+      <div class="contact-info" appReveal>
         <span class="section-label font-body">Contact Details</span>
         <h2 class="font-display">Reach the <span>right team.</span></h2>
         <p class="font-body">Fill in the form and we'll route your enquiry to the right department. Sourcing, merchandising or compliance.</p>
@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <form class="contact-form" #contactFormEl (submit)="sendEmail($event)">
+      <form class="contact-form" #contactFormEl (submit)="sendEmail($event)" appReveal>
         <input type="hidden" name="time">
         <div class="contact-form__row">
           <div class="contact-form__field">
@@ -145,12 +145,12 @@
        VISIT — map band with overlaid address card
   ═══════════════════════════════════════ -->
   <section class="contact-map" id="map">
-    <div class="wrap contact-map__head">
+    <div class="wrap contact-map__head" appReveal>
       <span class="section-label font-body">Find Us</span>
       <h2 class="font-display">Visit the <span>factory floor.</span></h2>
     </div>
 
-    <div class="contact-map__frame wrap">
+    <div class="contact-map__frame wrap" appReveal>
       <iframe
         src="https://www.google.com/maps?q=No+261+Siri+Dhamma+Mawatha+Colombo+10+Sri+Lanka&output=embed"
         loading="lazy"
@@ -175,7 +175,7 @@
     <img class="contact-cta__img" src="assets/crew.png" alt="Maliban Wovens team">
     <div class="contact-cta__overlay"></div>
     <span class="contact-cta__ghost font-display" aria-hidden="true">MW</span>
-    <div class="contact-cta__content wrap">
+    <div class="contact-cta__content wrap" appReveal>
       <h2 class="font-display">Prefer to talk <span>directly?</span></h2>
       <a href="tel:+94112668000" class="btn-primary font-body">Call Us Now →</a>
     </div>

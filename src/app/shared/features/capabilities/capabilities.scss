@@ -6,7 +6,6 @@
 
 .capabilities-page {
   display: block;
-  overflow-x: hidden;
 }
 
 @keyframes capMarquee {
@@ -79,6 +78,7 @@
   display: flex;
   align-items: flex-end;
   padding: 100px 7% 60px;
+  border-radius: 0 0 35px 35px;
 
   // Below 768px the stat rail becomes a full-width bottom bar (see
   // .cap-hero__rail), same as Home's hero-stats sitting under the
@@ -154,7 +154,7 @@
   }
 }
 
-.rail-stat {
+/* .rail-stat {
   text-align: right;
   padding-right: 3px;
   border-right: 1px solid var(--border);
@@ -186,7 +186,7 @@
       border-right: none;
     }
   }
-}
+} */
 
 .hero-content,
 .cap-hero__content {
@@ -421,92 +421,260 @@
   margin-bottom: 21px;
 }
 
-.cap-showcase__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 13px;
-
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 560px) {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
-.showcase-group {
+// Each category: media (name + gallery) on one side, a pinned
+// horizontal carousel of its garment types on the other. The section
+// scroll-jacks on desktop (via appPinnedShowcase) — media stays put
+// while the track slides past it and highlights whichever item sits
+// at center. Below 860px the directive disables itself and a plain
+// static grid (.types-grid--mobile-fallback) takes over instead.
+.pin-showcase {
   position: relative;
 
-  &__num {
-    position: absolute;
-    top: 13px;
-    left: 13px;
-    z-index: 3;
-    color: var(--sky);
-    font-size: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);
+  & + & {
+    margin-top: 40px;
   }
 
-  &__label {
-    position: absolute;
-    left: 15px;
-    bottom: 16px;
-    z-index: 3;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    color: var(--bg);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: clamp(1.1875rem, 0.4vw + 1.1rem, 1.3125rem);
-    max-height: calc(50% - 30px);
-    font-weight: 600;
+  &--reverse .pin-showcase__inner {
+    .pin-showcase__media {
+      order: 2;
+    }
 
-    // On mobile, vertical writing-mode text ("WOVEN BOTTOMS",
-    // "SUITING & OUTER WEAR") is taller than the 160px main tile can
-    // hold at this font-size. Once a vertical-rl block runs out of
-    // block-size it wraps into a NEW column instead of a new line —
-    // and with the rotate(180deg) flip, that second column renders
-    // to the left of the first, overlapping the tile beside/below it
-    // (this is the "double vertical text" overlap bug). Rather than
-    // keep shrinking to try to out-fit the label, drop the vertical
-    // treatment on mobile entirely: lay the label out horizontally
-    // in normal flow below the gallery, where it can't collide with
-    // anything.
-    @media (max-width: 560px) {
-      position: static;
-      writing-mode: horizontal-tb;
-      transform: none;
-      display: block;
-      margin-top: 10px;
-      max-height: none;
-      white-space: normal;
-      color: var(--bg);
-      font-size: clamp(0.9375rem, 1vw + 0.75rem, 1.0625rem);
+    .pin-showcase__side {
+      order: 1;
+    }
+  }
+
+  @media (max-width: 860px) {
+    height: auto !important;
+
+    &--reverse .pin-showcase__inner {
+      .pin-showcase__media {
+        order: 1;
+      }
+
+      .pin-showcase__side {
+        order: 2;
+      }
     }
   }
 }
 
-.showcase-group__gallery {
+.pin-showcase__inner {
+  position: sticky;
+  // Fallback top. The directive will dynamically override this 
+  // with a pixel-perfect vertically centered value.
+  top: 20vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  // Centered rather than top-aligned: the media column (heading + gallery)
+  // is taller than the side column (caption + cards), so centering the
+  // shorter side column within the taller one gives equal space above
+  // and below — reading as "aligned" — instead of the cards being pinned
+  // to the top with a large empty gap underneath.
+  align-items: center;
+
+  @media (max-width: 860px) {
+    position: static;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.pin-showcase__media {
+  position: relative;
+}
+
+.pin-showcase__side {
+  min-width: 0;
+}
+
+.showcase-row__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.showcase-row__num {
+  display: block;
+  color: var(--sky);
+  font-size: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);
+}
+
+.showcase-row__title {
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  color: var(--bg);
+  line-height: 1.1;
+}
+
+.showcase-row__gallery {
+  position: relative;
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 6px;
-  aspect-ratio: 6 / 4;
+  aspect-ratio: 6 / 4.6;
   min-height: 213px;
 
   @media (max-width: 560px) {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 160px 100px;
     min-height: 0;
-    // The base rule's aspect-ratio (6/4) was still in effect here, which
-    // locks this box to ~228px tall on a 342px-wide mobile column. But
-    // the explicit rows above need 160+6+100 = 266px. That mismatch let
-    // the bottom-row tiles spill out past the box, visually overlapping
-    // and hiding the product label sitting right below the gallery.
-    // Unsetting the ratio lets the box size to its actual content.
     aspect-ratio: auto;
   }
+}
+
+// Old vertical label removed
+
+.types-caption {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: clamp(0.6875rem, 0.2vw + 0.65rem, 0.75rem);
+  color: var(--sky);
+  margin-bottom: 20px;
+  font-size: medium;
+}
+
+// The pinned horizontal stage — hidden entirely below 860px, where the
+// static fallback grid takes over instead.
+.pin-showcase__stage {
+  overflow: hidden;
+  width: 100%;
+
+  @media (max-width: 860px) {
+    display: none;
+  }
+}
+
+.pin-showcase__track {
+  display: flex;
+  gap: 24px;
+  padding-block: 28px; // Gives room for the 1.08x scale without clipping
+  will-change: transform;
+}
+
+.pin-item {
+  flex: 0 0 auto;
+  width: clamp(280px, 26vw, 380px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0.45;
+  transform: scale(0.86);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.pin-item__img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 3 / 4;
+  background: transparent;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.pin-item__label {
+  text-align: center;
+  font-size: clamp(0.9375rem, 0.3vw + 0.875rem, 1.0625rem);
+  color: var(--bg);
+}
+
+// Whichever item is currently nearest the stage's center, per the
+// directive's measurement — scaled up, full opacity, everything else
+// stays dimmed and smaller.
+.pin-item.is-active {
+  opacity: 1;
+  transform: scale(1.08);
+
+  .pin-item__img {
+    box-shadow: 0 12px 30px rgba(18, 35, 43, 0.18);
+  }
+
+  .pin-item__label {
+    color: var(--sky);
+    font-weight: 600;
+  }
+}
+
+// Static fallback for mobile — same look as the desktop pinned cards,
+// just laid out in a normal wrapping grid with no scroll-jacking.
+.types-grid--mobile-fallback {
+  display: none;
+
+  @media (max-width: 860px) {
+    display: grid;
+  }
+}
+
+.types-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+
+  @media (max-width: 560px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+// 8 items — 4 x 2 on tablet+, drops to 2 columns on small phones.
+.types-grid--8 {
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// 6 items — 3 x 2, so no half-empty final row at any breakpoint.
+.types-grid--6 {
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+}
+
+.type-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.type-card__img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  aspect-ratio: 2 / 3;
+  background: transparent;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+}
+
+.type-card:hover .type-card__img img {
+  transform: scale(1.07);
+}
+
+.type-card__label {
+  font-size: clamp(0.75rem, 0.2vw + 0.7rem, 0.8125rem);
+  color: var(--bg);
+  line-height: 1.25;
 }
 
 .showcase-tile {
@@ -535,6 +703,7 @@
     }
   }
 }
+
 
 /*=====================================================
     Innovation Timeline
@@ -1092,7 +1261,87 @@
 }
 
 // ─────────────────────────────────────────────
-//  CTA — ghost monogram behind the headline
+//  DOWNLOAD — company profile PDF banner, sits between the marquee
+//  and the closing CTA
+// ─────────────────────────────────────────────
+.cap-download {
+  padding: 48px 0;
+}
+
+.cap-download__inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 32px 40px;
+  background: var(--bg);
+  border-radius: 16px;
+  color: #fff;
+
+  @media (max-width: 720px) {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 28px 24px;
+  }
+}
+
+.cap-download__icon {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--sky);
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.cap-download__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  h3 {
+    font-size: clamp(1.25rem, 1vw + 1.1rem, 1.625rem);
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: clamp(0.875rem, 0.2vw + 0.8rem, 0.9375rem);
+    line-height: 1.5;
+    max-width: 46ch;
+  }
+}
+
+.cap-download__btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+
+  svg {
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 720px) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+// ─────────────────────────────────────────────
+//  CTA — ghost monogram behind the headline.
+//  Carries both the "request a presentation" and
+//  "download company profile" asks in one place.
 // ─────────────────────────────────────────────
 .cap-cta {
   position: relative;
@@ -1142,10 +1391,47 @@
     font-size: clamp(1.625rem, 2.5vw, 2.625rem);
     color: var(--white);
     max-width: 427px;
-    margin-bottom: 19px;
+    margin-bottom: 14px;
 
     span {
       color: var(--sky);
     }
+  }
+}
+
+.cap-cta__sub {
+  color: #c7d3da;
+  max-width: 420px;
+  font-size: clamp(0.9375rem, 0.25vw + 0.875rem, 1rem);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.cap-cta__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border: 1px solid rgba(244, 242, 234, 0.3);
+  color: var(--white);
+  text-transform: uppercase;
+  border-radius: 8px;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+
+  i {
+    color: var(--sky);
+  }
+
+  &:hover {
+    background: rgba(244, 242, 234, 0.08);
+    border-color: rgba(244, 242, 234, 0.5);
+    transform: translateY(-1px);
   }
 }
